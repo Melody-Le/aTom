@@ -7,31 +7,35 @@
     <body>
       <%- include('../partials/navbar') %>
       <div class="container mt-5 ">
-        <div class="row">
-          <figure class="user-profile-box col-sm-2 mb-0">
-              <img class="user-profile-image img-fluid" src="https://i.pinimg.com/564x/ca/7c/61/ca7c61756513e98ef376c7c10e82ba23.jpg" alt="user-profile-photo">
-              <div class="stars-outer">
-                <div class="stars-inner" style="width:80%"></div>
-              </div>
-              <p class="mb-0">Clara J</p>
-              <div>
-                <a href="#">
-                  <i class="fa-solid fa-message"></i>
-                </a>
-                <a href="mailto:grumpy.cat@emeow.com">
-                  <i class="fa-solid fa-envelope"></i>
-                </a>
-              </div>
-          </figure>
-          <div class="project-title col-sm-9">
+        <div class="container-fluid">
+          <div class="project-title row">
             <div class="d-flex">
               <h2 class="mr-auto"><%= projectDetail.project_name %></h2>
               <a href="#">
                 <i class="fa-solid fa-file-pen"></i>
               </a>
             </div>
+
+            <figure class="user-profile-box mb-0">
+              <img class="user-profile-image" src="https://i.pinimg.com/564x/ca/7c/61/ca7c61756513e98ef376c7c10e82ba23.jpg" alt="user-profile-photo">
+              <div>
+                <div class="stars-outer">
+                  <div class="stars-inner" style="width:80%"></div>
+                </div>
+                <div>
+                  <p class="mb-0">Clara J</p>
+                  <a href="#">
+                    <i class="fa-solid fa-message"></i>
+                  </a>
+                  <a href="mailto:grumpy.cat@emeow.com">
+                    <i class="fa-solid fa-envelope"></i>
+                  </a>
+                </div>
+                
+              </div>
+          </figure>
             
-            <div>
+            <div class="mt-3">
               <h6>Provided Skill</h6>
               <ul class="container list-inline px-0">
                 <% projectDetail?.skills.forEach((skill) => { %>
@@ -45,7 +49,7 @@
           <h3>Project Description:</h3>
           <%= projectDetail.project_description %>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid mt-5">
           <h3>Project photos:</h3>
           <div class="project-photos">
             <% projectPhotos.forEach((photo) => { %>

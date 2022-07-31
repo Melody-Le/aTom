@@ -6,6 +6,11 @@
 a {
   color: black !important;
 }
+.cover-container {
+  display: relative;
+  background-color: blue;
+  height: 10rem;
+}
 .user-information-header {
   display: flex;
   flex-direction: column;
@@ -15,6 +20,9 @@ a {
   border-radius: 2rem;
   margin-top: 1rem;
   object-fit: cover;
+  position: absolute;
+  top: 5rem;
+  left: 5rem;
 }
 
 .list-inline-item {
