@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/generic_head') %>
+    <title>aTom|Login</title>
+  </head>
+  <body>
+    <div class="login-form">
+      <h3>Login Page</h3>
+      <form action="/users/login" method="POST">
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" name="email" />
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" name="password" />
+        </div>
+        <button>Login</button>
+        <button class="mt-3">
+          <a href="/users/register">Register</a>
+        </button>
+        
+      </form>
+      <div>
+          <a  href='#'>forget password?</a>
+      </div>
+    </div>
+  </body>
+</html>
