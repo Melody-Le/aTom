@@ -3,8 +3,6 @@
       <title>aTom | Project</title>
       <link rel="stylesheet" type="text/css" href="/styles/project_detail.css">
       <%- include('../partials/generic_head') %>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-      <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     </head>
     <body>
       <%- include('../partials/navbar') %>
@@ -25,32 +23,33 @@
               </div>
           </figure>
           <div class="project-title col-sm-9">
-            <h2><%= projectDetail.project_name %></h2>
+            <h2><%= projectDetail?.project_name %></h2>
             <div>
               <h6>Provided Skill</h6>
               <ul class="container list-inline px-0">
-                <% projectDetail.skills.forEach((skill) => { %>
+                <% projectDetail?.skills.forEach((skill) => { %>
                   <li class="list-inline-item mx-0 rounded-3"><%= skill %></li>
                 <% }) %>
               </ul>
             </div>
           </div>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid mt-5">
           <h3>Project Description:</h3>
-          <%= projectDetail.project_description %>
+          <%= projectDetail?.project_description %>
         </div>
         <div class="container-fluid">
           <h3>Project photos:</h3>
           <div class="project-photos">
             <% projectPhotos.forEach((photo) => { %>
               <div class="project-photo">
-                <img src="<%= photo.photo_url %>" alt="photo-1">
+                <img src="<%= photo?.photo_url %>" alt="photo-1">
                 <p class="photo-name">Random photo</p>
               </div>
             <% }) %>
           </div>
         </div>
       </div>
+      <%- include('../partials/footer.ejs') %>
     </body>
 </html>

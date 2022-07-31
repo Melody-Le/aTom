@@ -3,42 +3,28 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-.user-profile-box {
+a {
+  color: black !important;
+}
+.user-information-header {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* width: 10rem; */
-  /* flex: 0 0 10rem; */
+  justify-content: space-around;
 }
 .user-profile-image {
-  border-radius: 1rem;
+  border-radius: 2rem;
   margin-top: 1rem;
   object-fit: cover;
 }
-.project-title {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-}
+
 .list-inline-item {
   background-color: #cfcfcf;
   padding: 0.1rem 1rem;
   margin-top: 0.5rem;
 }
-.project-photos {
-  display: flex;
-  flex-flow: row wrap;
-}
-.project-photos > * {
-  padding: 0.5rem;
-  flex: 1 30%;
+.carousel-item {
   height: 20rem;
-  overflow: hidden;
-  text-align: center;
 }
-a {
-  color: black !important;
+.carousel-item img {
+  width: 100%;
 }
