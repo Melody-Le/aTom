@@ -58,31 +58,17 @@
         <div class="container-fluid">
           <h3>Project photos:</h3>
           <div class="project-photos">
-            <div class="project-photo">
-              <img src="https://i.pinimg.com/564x/78/b4/3d/78b43d98cc0e37588f1b0e4ac1ed9ecf.jpg" alt="photo-1">
-              <p class="photo-name">Random photo</p>
-            </div>
-            <div class="project-photo">
-              <img src="https://i.pinimg.com/564x/42/da/97/42da97332d9faa0ae4aa62fb6532827c.jpg" alt="photo-1">
-              <p class="photo-name">Random photo</p>
-            </div>
-            <div class="project-photo">
-              <img src="https://i.pinimg.com/564x/2d/93/7b/2d937b44a532ae797509887773290666.jpg" alt="photo-1">
-              <p class="photo-name">Random photo</p>
-            </div>
-            <div class="project-photo">
-              <img src="https://i.pinimg.com/564x/fe/5d/a0/fe5da0466d29028496817753301b1baf.jpg" alt="photo-1">
-              <p class="photo-name">Random photo</p>
-            </div>
-            <div class="project-photo">
-              <img src="https://i.pinimg.com/564x/de/bc/30/debc305fdc415aedcdb1f6732a48c04a.jpg" alt="photo-1">
-              <p class="photo-name">Random photo</p>
-            </div>
-            <div class="project-photo">
-              <img src="https://i.pinimg.com/564x/ba/06/83/ba0683e775ae2c132d3bafb0b0f2e5c5.jpg" alt="photo-1">
-              <p class="photo-name">Random photo</p>
-            </div>
+            
           </div>
+          <% projectPhotos.forEach((photo) => { %>
+            <div class="project-photo">
+              <img src="<%= photo.photo_url %>" alt="photo-1">
+              <p class="photo-name">Random photo</p>
+            </div>
+          <% }) %>
+        </div>
+
+        
         </div>
       </div>
     </body>
