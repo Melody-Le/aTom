@@ -11,7 +11,7 @@
       <div class="container mt-5 ">
         <div class="row">
           <figure class="user-profile-box col-sm-2 mb-0">
-              <img class="user-profile-image rounded-4" src="https://i.pinimg.com/564x/ca/7c/61/ca7c61756513e98ef376c7c10e82ba23.jpg" alt="user-profile-photo">
+              <img class="user-profile-image img-fluid" src="https://i.pinimg.com/564x/ca/7c/61/ca7c61756513e98ef376c7c10e82ba23.jpg" alt="user-profile-photo">
               <p class="mb-0">Clara J</p>
               <div>
                 <a href="#">
@@ -20,22 +20,23 @@
                 <button class="btn border-0 mail">
                   <a href="mailto:grumpy.cat@emeow.com">
                     <i class="fa-regular fa-envelope-open"></i>
-                  </a></button>
+                  </a>
+                </button>
               </div>
           </figure>
           <div class="project-title col-sm-9">
             <h2><%= projectDetail.project_name %></h2>
             <div>
               <h6>Provided Skill</h6>
-              <ul class=" container list-inline px-0">
+              <ul class="container list-inline px-0">
                 <% projectDetail.skills.forEach((skill) => { %>
-                  <li class="list-inline-item mx-0"><%= skill %></li>
+                  <li class="list-inline-item mx-0 rounded-3"><%= skill %></li>
                 <% }) %>
               </ul>
             </div>
           </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
           <h3>Project Description:</h3>
           <%= projectDetail.project_description %>
         </div>
