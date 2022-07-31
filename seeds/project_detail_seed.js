@@ -3,9 +3,10 @@ const mongoose = require("mongoose");
 const projectDetail = require("../models/project_detail");
 
 const data = [
+  //1
   {
+    user_id: "62e6a75cb29097ea5886a1c8",
     project_name: "Private House with Santorini mood",
-    categories: ["santorini", "interior design", "Modern-style", "outdoor"],
     project_description: `Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.\n
       This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:\n
       2D layout pack: Furniture layout. NO 3D modeling nor renderings.\n
@@ -14,64 +15,58 @@ const data = [
     `,
     skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
   },
+  //2
   {
-    project_name: "3D rendering artist",
-    categories: ["santorini", "interior design", "Modern-style", "outdoor"],
-    project_description: `Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.\n
-      This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:\n
-      2D layout pack: Furniture layout. NO 3D modeling nor renderings.\n
-      Powder room pack: Suitable for small bathrooms/powder rooms.\n
-      Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
-    `,
-    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
-  },
-  {
-    project_name: "Design Lighting",
-    categories: ["santorini", "interior design", "Modern-style", "outdoor"],
-    project_description: `Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.\n
-      This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:\n
-      2D layout pack: Furniture layout. NO 3D modeling nor renderings.\n
-      Powder room pack: Suitable for small bathrooms/powder rooms.\n
-      Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
-    `,
-    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
-  },
-  {
-    project_name: "Design Coffee shop",
-    categories: ["santorini", "interior design", "Modern-style", "outdoor"],
-    project_description: `Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.\n
-      This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:\n
-      2D layout pack: Furniture layout. NO 3D modeling nor renderings.\n
-      Powder room pack: Suitable for small bathrooms/powder rooms.\n
-      Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
-    `,
-    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
-  },
-  {
-    project_name: "Interior Office room for game center",
-    categories: ["santorini", "interior design", "Modern-style", "outdoor"],
-    project_description: `Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.\n
-      This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:\n
-      2D layout pack: Furniture layout. NO 3D modeling nor renderings.\n
-      Powder room pack: Suitable for small bathrooms/powder rooms.\n
-      Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
-    `,
-    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
-  },
-  {
-    project_name: "Photographer for house seller",
-    categories: ["santorini", "interior design", "Modern-style", "outdoor"],
-    project_description: `Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.\n
-      This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:\n
-      2D layout pack: Furniture layout. NO 3D modeling nor renderings.\n
-      Powder room pack: Suitable for small bathrooms/powder rooms.\n
-      Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
-    `,
-    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
-  },
-  {
+    user_id: "62e6a75cb29097ea5886a1c8",
     project_name: "Design Bedroom for Kid",
-    categories: ["santorini", "interior design", "Modern-style", "outdoor"],
+    project_description: `Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.\n
+      This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:\n
+      2D layout pack: Furniture layout. NO 3D modeling nor renderings.\n
+      Powder room pack: Suitable for small bathrooms/powder rooms.\n
+      Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
+    `,
+    skills: ["Concept Design", "Revit", "Layout plan", "Color Mood for Kids"],
+  },
+  //3
+  {
+    user_id: "62e6a75cb29097ea5886a1c8",
+    project_name: "Design Lighting",
+    project_description: `Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.\n
+      This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:\n
+      2D layout pack: Furniture layout. NO 3D modeling nor renderings.\n
+      Powder room pack: Suitable for small bathrooms/powder rooms.\n
+      Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
+    `,
+    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
+  },
+  //4
+  {
+    user_id: "62e6a75cb29097ea5886a1c9",
+    project_name: "Design Coffee shop",
+    project_description: `Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.\n
+      This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:\n
+      2D layout pack: Furniture layout. NO 3D modeling nor renderings.\n
+      Powder room pack: Suitable for small bathrooms/powder rooms.\n
+      Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
+    `,
+    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
+  },
+  //5
+  {
+    user_id: "62e6a75cb29097ea5886a1c9",
+    project_name: "Photographer for house seller",
+    project_description: `Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.\n
+      This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:\n
+      2D layout pack: Furniture layout. NO 3D modeling nor renderings.\n
+      Powder room pack: Suitable for small bathrooms/powder rooms.\n
+      Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
+    `,
+    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
+  },
+  //6
+  {
+    user_id: "62e6a75cb29097ea5886a1c9",
+    project_name: "3D rendering artist",
     project_description: `Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.\n
       This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:\n
       2D layout pack: Furniture layout. NO 3D modeling nor renderings.\n

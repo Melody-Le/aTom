@@ -17,8 +17,10 @@ const userSchema = new Schema(
     linkedIn: { type: String },
     skills: { type: Array },
     about_me: { type: String },
+    profile_photos_url: { type: String },
+    cover_photos_url: { type: String },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", freelancerSchema);
+module.exports = mongoose.model("User", userSchema);
