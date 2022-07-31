@@ -24,51 +24,31 @@
               </div>
           </figure>
           <div class="project-title col-sm-9">
-            <h2>APARTMENT SANTORINI STYLE</h2>
+            <h2><%= projectDetail.project_name %></h2>
             <div>
               <h6>Provided Skill</h6>
               <ul class=" container list-inline px-0">
-                <li class="list-inline-item mx-0">Concept Designer</li>
-                <li class="list-inline-item mx-0">Revit</li>
-                <li class="list-inline-item mx-0">Lighting designer</li>
-                <li class="list-inline-item mx-0">3DSmax rendering</li>
-                <li class="list-inline-item mx-0">Layout plan</li>
-                <li class="list-inline-item mx-0">Mood board</li>
+                <% projectDetail.skills.forEach((skill) => { %>
+                  <li class="list-inline-item mx-0"><%= skill %></li>
+                <% }) %>
               </ul>
             </div>
           </div>
         </div>
         <div class="container">
           <h3>Project Description:</h3>
-          <p class="font-weight-bold">
-            Every design is treated differently, I highly encourage contacting me first to quote the project. It will only take a few minutes and will be free of charge.
-          </p>
-          <p>
-            This Project is dedicated to creating the Santorini apartment in Singapore, go from that empty room to the space that best fits your needs, and enjoy this exclusive interior design experience with these prime benefits:
-          </p>
-          <p>
-            Understanding the pre-established packages:
-          </p>
-          <ul>
-            <li>2D layout pack: Furniture layout. NO 3D modeling nor renderings.</li>
-            <li>Powder room pack: Suitable for small bathrooms/powder rooms.</li>
-            <li>Master bathroom pack: Suitable for large bathrooms/master bathrooms.</li>
-          </ul>
+          <%= projectDetail.project_description %>
         </div>
         <div class="container-fluid">
           <h3>Project photos:</h3>
           <div class="project-photos">
-            
+            <% projectPhotos.forEach((photo) => { %>
+              <div class="project-photo">
+                <img src="<%= photo.photo_url %>" alt="photo-1">
+                <p class="photo-name">Random photo</p>
+              </div>
+            <% }) %>
           </div>
-          <% projectPhotos.forEach((photo) => { %>
-            <div class="project-photo">
-              <img src="<%= photo.photo_url %>" alt="photo-1">
-              <p class="photo-name">Random photo</p>
-            </div>
-          <% }) %>
-        </div>
-
-        
         </div>
       </div>
     </body>

@@ -13,7 +13,7 @@ const data = [
       Powder room pack: Suitable for small bathrooms/powder rooms.\n
       Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
     `,
-    skill: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
+    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
   },
   {
     project_name: "3D rendering artist",
@@ -25,7 +25,7 @@ const data = [
       Powder room pack: Suitable for small bathrooms/powder rooms.\n
       Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
     `,
-    skill: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
+    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
   },
   {
     project_name: "Design Lighting",
@@ -37,7 +37,7 @@ const data = [
       Powder room pack: Suitable for small bathrooms/powder rooms.\n
       Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
     `,
-    skill: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
+    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
   },
   {
     project_name: "Design Coffee shop",
@@ -49,7 +49,7 @@ const data = [
       Powder room pack: Suitable for small bathrooms/powder rooms.\n
       Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
     `,
-    skill: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
+    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
   },
   {
     project_name: "Interior Office room for game center",
@@ -61,7 +61,7 @@ const data = [
       Powder room pack: Suitable for small bathrooms/powder rooms.\n
       Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
     `,
-    skill: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
+    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
   },
   {
     project_name: "Photographer for house seller",
@@ -73,7 +73,7 @@ const data = [
       Powder room pack: Suitable for small bathrooms/powder rooms.\n
       Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
     `,
-    skill: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
+    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
   },
   {
     project_name: "Design Bedroom for Kid",
@@ -85,14 +85,19 @@ const data = [
       Powder room pack: Suitable for small bathrooms/powder rooms.\n
       Master bathroom pack: Suitable for large bathrooms/master bathrooms.\n
     `,
-    skill: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
+    skills: ["Concept Design", "Revit", "Lighting Desgin", "3DSmax Rendering", "Layout plan", "Santorini Mood"],
   },
 ];
 
 const connStr = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@generalassembly.17sk9.mongodb.net/?retryWrites=true&w=majority`;
 async function init() {
   const DB = await mongoose.connect(connStr, { dbName: "aTom" });
-  await projectDetail.insertMany(data);
+
+  // data.forEach((project) => {
+  //   projectDetail.insert({ project_description: project.project_description });
+  // });
+  await projectDetail.updateMany({ project_description });
+  // await projectDetail.insertMany(data);
 
   console.log("success!");
 

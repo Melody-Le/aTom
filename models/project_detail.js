@@ -8,8 +8,8 @@ const projectDetailSchema = new Schema(
     // project_photo_id: [{ type: Schema.Types.ObjectId, ref: "ProjectPhotos" }],
     // author_id: { type: Schema.Types.ObjectId, ref: "User" },
     categories: { type: Array },
-    description: { type: String },
-    skill: { type: Array },
+    project_description: { type: String },
+    skills: { type: Array },
   },
   { timestamps: true }
 );
