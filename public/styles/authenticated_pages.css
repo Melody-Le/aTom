@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.register-form {
+  background-color: hsl(0, 0%, 96%);
+  background-image: url("/public/assets/images/background-1.jpeg");
+  height: 100vh;
+}
+.logo {
+  width: 10rem;
+  height: 10rem;
+}

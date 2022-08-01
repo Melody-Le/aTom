@@ -2,9 +2,9 @@ const bcrypt = require("bcrypt");
 const Users = require("../models/user.js");
 
 const controller = {
-  // showRegistrationForm(req, res) {
-  //   res.render("users/register.ejs");
-  // },
+  showRegistrationForm(req, res) {
+    res.render("authenticated/register.ejs");
+  },
   // async register(req, res) {
   //   const { userName, email, password, role } = req.body;
   //   console.log(req.body);
@@ -29,8 +29,8 @@ const controller = {
   //   }
   //   res.send("hehe");
   // },
-  // showLoginForm: (req, res) => {
-  //   res.render("users/login.ejs");
-  // },
+  showLoginForm: (req, res) => {
+    res.render("authenticated/login.ejs");
+  },
 };
 module.exports = controller;
