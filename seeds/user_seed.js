@@ -31,7 +31,7 @@ const data = [
     about_me:
       "I'm a professional 3D artist and interior designer. I specialize in residential space planning, custom kitchen and bath design, and cohesive interiors. Having a multi-cultural background has allowed me to understand my client's needs and requirements, performing over 130 successful projects all around the globe. Overdeliver, overachieve, and outstanding are the three O's my clients always say about me. I'm always open to working opportunities and collaborations. Do not hesitate to contact me, we could do great things together!",
     profile_photos_url: "https://i.pinimg.com/564x/ea/9b/c6/ea9bc65fb7c880f715532880410a0f73.jpg",
-    cover_photos_url: "https://i.pinimg.com/564x/30/f3/65/30f365e5c2df89bc2813161592715bfd.jpg",
+    cover_photos_url: "https://i.pinimg.com/564x/1f/97/c1/1f97c1df051bde2435c3648f127be91e.jpg",
   },
   {
     user_name: "Joice L",
@@ -46,7 +46,7 @@ const data = [
     about_me:
       "I'm a professional 3D artist and interior designer. I specialize in residential space planning, custom kitchen and bath design, and cohesive interiors. Having a multi-cultural background has allowed me to understand my client's needs and requirements, performing over 130 successful projects all around the globe. Overdeliver, overachieve, and outstanding are the three O's my clients always say about me. I'm always open to working opportunities and collaborations. Do not hesitate to contact me, we could do great things together!",
     profile_photos_url: "https://i.pinimg.com/564x/90/b7/62/90b762c1436b620eae93ec1db63a8171.jpg",
-    cover_photos_url: "https://i.pinimg.com/564x/30/f3/65/30f365e5c2df89bc2813161592715bfd.jpg",
+    cover_photos_url: "https://i.pinimg.com/564x/78/76/8f/78768f0ce9056d53e0216e73a9c8cfc8.jpg",
   },
 ];
 const connStr = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@generalassembly.17sk9.mongodb.net/?retryWrites=true&w=majority`;

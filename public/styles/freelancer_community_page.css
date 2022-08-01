@@ -12,12 +12,15 @@
   top: -7rem;
   left: 25%;
 }
-
 .profile-image:hover {
   transform-style: preserve-3d;
   transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
   transform: scale(1.05);
+}
+.cover-photo {
+  height: 8rem;
+  object-fit: cover;
 }
 .card-text {
   height: 8rem;
