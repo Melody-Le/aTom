@@ -1,15 +1,15 @@
 .freelancer-card {
   position: relative;
-  margin-top: 6rem;
+  margin-top: 8rem;
   border-radius: 1rem;
 }
 .profile-image {
   position: absolute;
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   object-fit: cover;
   border-radius: 100%;
-  top: -5rem;
+  top: -7rem;
   left: 25%;
 }
 
@@ -18,4 +18,17 @@
   transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
   transform: scale(1.05);
+}
+.card-text {
+  height: 8rem;
+  overflow-y: auto;
+}
+.list-inline {
+  height: 4rem;
+  overflow-y: scroll;
+}
+.list-inline-item {
+  background-color: #e7e7e7;
+  padding: 0.1rem 1rem;
+  margin-top: 0.5rem;
 }
