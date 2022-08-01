@@ -4,7 +4,7 @@ const ProjectPhotos = require("../models/project_photo.js");
 const controller = {
   async showProjectDetailPage(req, res) {
     const projectId = req.params.project_detail_id;
-    const projectDetail = await ProjectDetail.findOne({ _id: projectId });
+    const projectDetail = await ProjectDetail.findOne({ _id: projectId }).populate("user_id");
     const projectPhotos = await ProjectPhotos.find({ project_detail_id: projectId }, "photo_url");
     res.render("./project-detail/index.ejs", { projectPhotos, projectDetail });
   },

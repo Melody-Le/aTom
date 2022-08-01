@@ -16,7 +16,6 @@ a {
   margin-top: 1rem;
   object-fit: cover;
 }
-
 .list-inline-item {
   background-color: #e7e7e7;
   padding: 0.1rem 1rem;
@@ -47,4 +46,29 @@ a {
 .stars-inner::before {
   content: "\f005 \f005 \f005 \f005 \f005";
   color: #ca1880;
+}
+.project-description {
+  height: 10rem;
+  overflow-y: scroll;
+}
+.card-project {
+  position: relative;
+}
+.edit-project-icon {
+  border-radius: 50%;
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0rem;
+  color: violet;
+  border: white 0.3rem solid;
+  background-color: #e7e7e7;
+  font-size: 1rem;
+  z-index: 99;
+  /* text-indent: -3px; */
+}
+i {
+  padding: 0.4rem;
+  background-color: #e7e7e7;
+  border-radius: 100%;
 }
