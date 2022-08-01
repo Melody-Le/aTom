@@ -37,6 +37,8 @@ a {
   height: 20rem;
   overflow: hidden;
   width: 100%;
+  /* object-position: 50% 50%; */
+  /* object-position: left bottom; */
 }
 /* REVIEW  */
 .stars-outer {
