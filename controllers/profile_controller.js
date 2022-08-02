@@ -12,5 +12,8 @@ const controller = {
     // const projectPhotos = await ProjectPhotos.find({ project_detail_id: projectId }, "photo_url");
     res.render("./profiles/index.ejs", { userData, userProjectList });
   },
+  new(req, res) {
+    res.send("Great. filling personal Form now");
+  },
 };
 module.exports = controller;

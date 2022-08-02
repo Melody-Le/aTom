@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+a {
+  color: #ca1880;
+}
 .register-form {
   background-color: hsl(0, 0%, 96%);
   background-image: url("/public/assets/images/background-1.jpeg");
@@ -11,4 +14,8 @@
 .logo {
   width: 10rem;
   height: 10rem;
+}
+.btn-block {
+  background-color: #ca1880;
+  color: white;
 }

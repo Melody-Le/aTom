@@ -5,6 +5,6 @@ const authenticatedController = require("../controllers/authenticated_controller
 router.get("/login", authenticatedController.showLoginForm);
 
 router.get("/register", authenticatedController.showRegistrationForm);
-// router.post("/register", userController.register);
+router.post("/register", authenticatedController.newRegister);
 
 module.exports = router;
