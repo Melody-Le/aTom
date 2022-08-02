@@ -9,14 +9,27 @@ const controller = {
     const userProjectList = await ProjectDetail.find({ user_id: userId });
     res.render("./profiles/index.ejs", { userData, userProjectList });
   },
+
   new(req, res) {
     res.render("./profiles/profile_new.ejs");
   },
+
+  //Post data from Personal information Form
   async create(req, res) {
-    console.log("user data when haven't filled the form: ", req.session.body); //BUG: Can not get the session information
-    const data = req.body;
-    console.log(data);
-    res.send("Done filling peofile information");
+    const personalData = req.body;
+    const currentUser = await Users.findById(`${req.session?.currentUser._id}`);
+    await currentUser.updateOne({
+      job_title: personalData.job_title,
+      postal_code: personalData.postal_code,
+      city: personalData.city,
+      linkedIn: personalData.linkedIn,
+      skills: personalData.skills,
+      about_me: personalData.about_me,
+      profile_photos_url: personalData.profile_photos_url,
+      cover_photos_url: personalData.cover_photos_url,
+    });
+    console.log("Done");
+    res.redireact(`/profile/${currentUser._id}`);
   },
 };
 module.exports = controller;
