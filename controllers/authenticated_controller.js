@@ -6,10 +6,8 @@ const controller = {
     res.render("authenticated/register.ejs", { error: false });
   },
   async newRegister(req, res) {
-    console.log(req.body);
     const { user_name: userName, email, password, confirm_password: confirmPassword } = req.body;
     isFreelancer = Boolean(req.body.isFreelancer);
-    console.log(isFreelancer);
     let errorMsg = null;
     if (!userName || !email || !password || !confirmPassword) {
       errorMsg = "Please fill in your email and password";
@@ -38,6 +36,7 @@ const controller = {
           return;
         }
         req.session.currentUser = newUser;
+        console.log(req.session);
         req.session.save(function (err) {
           if (err) {
             res.send("unable to save session");
