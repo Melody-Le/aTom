@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="/styles/authenticated_pages.css">
-    <%- include('../partials/generic_head') %>
     <title>aTom | Login</title>
+    <%- include('../partials/generic_head') %>
+    <link rel="stylesheet" type="text/css" href="/styles/authenticated_pages.css">
   </head>
   <body>
     <div class="container-fluid register-form text-center pt-3">
-      <div class="row gx-lg-5 align-items-center h-100">
+      <div class="row h-100">
         <!-- WELCOME NOTE FROM ATOM  -->
         <div class="col-lg-7 my-auto">
-          <!-- FIXME: I dont know why the logo Didnot appear even the path is correct already.-->
-          <img class="logo" src="/public/assets/images/logo_pink_1.png" alt="logo"> 
-          <h1 class="my-5">aTom</h1>
+          <img class="logo" src="/assets/images/logo_white_1.png" alt="logo"> 
         </div>
         <!-- LOGIN FORM -->
           <div class="card col-lg-4 my-auto mx-1">
@@ -39,7 +37,7 @@
                   <label class="form-label" for="form3Example4">Password</label>
                 </div>
 
-                <button type="submit" class="btn btn-block mb-4">
+                <button type="submit" class="btn btn-submit mb-4">
                   Login
                 </button>
 

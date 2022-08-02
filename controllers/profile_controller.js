@@ -29,7 +29,7 @@ const controller = {
       cover_photos_url: personalData.cover_photos_url,
     });
     console.log("Done");
-    res.redireact(`/profile/${currentUser._id}`);
+    res.redirect(`/profile/${currentUser._id}`);
   },
 };
 module.exports = controller;
