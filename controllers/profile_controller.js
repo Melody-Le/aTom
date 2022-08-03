@@ -12,7 +12,7 @@ const controller = {
     const projectIds = currentUser.project_list.map((project) => project._id);
     // const projectPhotos = projectIds.map(projectId=> await ProjectPhotos.find({ project_detail_id: projectId }))
     // const projectPhotos = await ProjectPhotos.find({ project_detail_id: proId }, "photo_url");
-    console.log(projectPhotos);
+    // console.log(projectPhotos);
     res.render("./profiles/index.ejs", { currentUser, projectList: currentUser.project_list });
   },
   //Method GET: to Show form for profile perofnal data
