@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/generic_head') %>
+    <link rel="stylesheet" type="text/css" href="/styles/authenticated_pages.css">
+    <title>aTom | Register</title>
+  </head>
+  <body>
+    <div class="container-fluid register-form text-center pt-3">
+      <!-- <div class="row gx-lg-5 align-items-center h-100"> -->
+      <div class="row h-100">
+        <!-- WELCOME NOTE FROM ATOM  -->
+        <div class="col-lg-7 my-auto">
+          <img class="logo" src="/assets/images/logo_white_1.png" alt="logo"> 
+        </div>
+        <!-- REGISTER FORM -->
+        <div class="card col-lg-4 my-auto mx-1">
+          <div class="card-body px-md-5">
+            <form action="/authenticated/register" method="POST">
+              <div class="text-center">
+                <p>Register with:</p>
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-google"></i>
+                </button>
+                <p> Or: </p>
+              </div>
+              <%- include('../partials/error_msg') %>
+              <div class="mb-4">
+                <input type="text" name="user_name" id="user-name" class="form-control" placeholder="minimum 3 letters"/>
+                <label class="form-label" for="user-name">Your account name</label>
+              </div>
+              <div class="mb-3">
+                <input type="email" name="email" placeholder="example@gmail.com" class="form-control" id="email" aria-describedby="emailHelp">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+              </div>
+        
+              <div class="mb-4">
+                <input type="password" name="password" class="form-control" id="Password">
+                <label for="Password" class="form-label">Password</label>
+              </div>
+        
+              <div class="mb-4">
+                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password" />
+                <label class="form-label" for="confirm_password">Confirm password</label>
+              </div>
+        
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="isFreelancer">
+                <label class="form-check-label" for="isFreelancer">I am a Freelancer</label>
+              </div>
+              
+              <button type="submit" class="btn btn-submit mb-4">
+                Register
+              </button>
+        
+              <div class="text-center">
+                <p>Already have account?</p>
+                <a href="/authenticated/login">Login</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

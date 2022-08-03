@@ -7,9 +7,11 @@ const session = require("express-session");
 
 // const setRoutes = require("./setRoutes");
 //NOTE: ROUTER:
-const userRouter = require("./routers/user_router");
+const authenticatedRouter = require("./routers/authenticated_router");
 const projectPhotoRouter = require("./routers/project_photo_router");
 const projectDetailRouter = require("./routers/project_detail_router");
+const profileRouter = require("./routers/profile_router");
+const pageRouter = require("./routers/page_router");
 
 const app = express();
 const port = 8080;
@@ -34,9 +36,11 @@ app.use(
 
 //=======ROUTER:
 
-app.use("/users", userRouter);
+app.use("/authenticated", authenticatedRouter);
 app.use("/idea-market", projectPhotoRouter);
+app.use("/", pageRouter);
 app.use("/project-detail", projectDetailRouter);
+app.use("/profile", profileRouter);
 app.get("/", (req, res) => res.send("Welcome"));
 
 app.listen(port, async () => {

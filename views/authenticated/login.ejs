@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>aTom | Login</title>
+    <%- include('../partials/generic_head') %>
+    <link rel="stylesheet" type="text/css" href="/styles/authenticated_pages.css">
+  </head>
+  <body>
+    <div class="container-fluid register-form text-center pt-3">
+      <div class="row h-100">
+        <!-- WELCOME NOTE FROM ATOM  -->
+        <div class="col-lg-7 my-auto">
+          <img class="logo" src="/assets/images/logo_white_1.png" alt="logo"> 
+        </div>
+        <!-- LOGIN FORM -->
+          <div class="card col-lg-4 my-auto mx-1">
+            <div class="card-body px-md-5">
+              <form action="/authenticated/login" method="POST">
+                <div class="text-center">
+                  <p>Login with:</p>
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                  </button>
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                  </button>
+                  <p>Or: </p>
+                </div>
+                <%- include('../partials/error_msg') %>
+                <div class="form-outline mb-4">
+                  <input type="email" name="email" id="form3Example3" class="form-control" />
+                  <label class="form-label" for="form3Example3">Email address</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="password" name="password" id="form3Example4" class="form-control" />
+                  <label class="form-label" for="form3Example4">Password</label>
+                </div>
+
+                <button type="submit" class="btn btn-submit mb-4">
+                  Login
+                </button>
+
+                <div class="text-center">
+                  <p>Don't have an account?</p>
+                  <a href="/authenticated/register">Register</a>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

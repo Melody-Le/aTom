@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  color: black !important;
+}
+.user-information-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.user-profile-image {
+  border-radius: 2rem;
+  margin-top: 1rem;
+  object-fit: cover;
+}
+.list-inline-item {
+  background-color: #e7e7e7;
+  padding: 0.1rem 1rem;
+  margin-top: 0.5rem;
+}
+.carousel-item {
+  height: 20rem;
+}
+.carousel-item img {
+  width: 100%;
+}
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: "FontAwesome";
+}
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0%;
+}
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #ca1880;
+}
+.project-description {
+  height: 10rem;
+  overflow-y: scroll;
+}
+.card-project {
+  position: relative;
+}
+.edit-project-icon {
+  border-radius: 50%;
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0rem;
+  color: #ca1880;
+  border: white 0.3rem solid;
+  background-color: #e7e7e7;
+  font-size: 1rem;
+  z-index: 99;
+}
+i {
+  padding: 0.4rem;
+  background-color: #e7e7e7;
+  border-radius: 100%;
+}
