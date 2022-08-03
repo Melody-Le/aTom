@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-const projectDetail = require("../models/project_detail");
+const project = require("../models/projects");
 const user_id_1 = "62ea3c4590a7a73bf26f177a";
 const user_id_2 = "62ea3c4590a7a73bf26f177b";
 const user_id_3 = "62ea3c4590a7a73bf26f177c";
@@ -85,10 +85,10 @@ async function init() {
   const DB = await mongoose.connect(connStr, { dbName: "aTom" });
 
   // data.forEach((project) => {
-  //   projectDetail.insert({ project_description: project.project_description });
+  //   project.insert({ project_description: project.project_description });
   // });
-  // await projectDetail.updateMany({ project_description });
-  await projectDetail.insertMany(data);
+  // await project.updateMany({ project_description });
+  await project.insertMany(data);
 
   console.log("success!");
 
