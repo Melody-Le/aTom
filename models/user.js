@@ -19,7 +19,7 @@ const userSchema = new Schema(
     about_me: { type: String },
     profile_photos_url: { type: String },
     cover_photos_url: { type: String },
-    user_projects: [{ type: Schema.Types.ObjectId, ref: "ProjectDetail" }],
+    project_list: [{ type: Schema.Types.ObjectId, ref: "ProjectDetail" }],
   },
   { timestamps: true }
 );

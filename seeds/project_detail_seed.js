@@ -1,9 +1,9 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const projectDetail = require("../models/project_detail");
-const user_id_1 = "62e72b143455ee46984e9e02";
-const user_id_2 = "62e72b143455ee46984e9e03";
-const user_id_3 = "62e72b143455ee46984e9e04";
+const user_id_1 = "62ea3c4590a7a73bf26f177a";
+const user_id_2 = "62ea3c4590a7a73bf26f177b";
+const user_id_3 = "62ea3c4590a7a73bf26f177c";
 
 const data = [
   //1

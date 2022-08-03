@@ -14,7 +14,6 @@ const controller = {
   },
   async create(req, res) {
     // const personalData = req.body;
-    // const currentUser = await Users.findById(`${req.session?.currentUser._id}`);
     // await currentUser.updateOne({
     //   job_title: personalData.job_title,
     //   postal_code: personalData.postal_code,
@@ -26,9 +25,8 @@ const controller = {
     //   cover_photos_url: personalData.cover_photos_url,
     // });
     // res.redirect(`/profile/${currentUser._id}`);
-    console.log(req.session);
+    const projectData = req.body;
     const currentUser = await Users.findById(`${req.session?.currentUser._id}`);
-    console.log(currentUser);
     res.send("Created Project");
   },
 };
