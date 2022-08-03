@@ -1,0 +1,28 @@
+<html>
+    <head>
+      <%- include('../partials/generic_head') %>
+      <title>aTom | Idea Market</title>
+      <link rel="stylesheet" type="text/css" href="/styles/idea_market.css">
+      <style></style>
+    </head>
+    <body>
+      <%- include('../partials/navbar') %>
+      <div class="container mt-5">
+        <div class="container-card card-columns">
+          <% projects.forEach((project) => { %>
+            <a class="project-photo my-2" href="/projects/<%= project._id %>">
+              <% project.photos.forEach((photo) => { %>
+                <div class="card d-inline-block mb-4">
+                  <img
+                    src="<%= photo %>"
+                    class="card-img-top restaurant-photo"
+                    alt="random-photo"
+                  />
+                </div>
+              <% }) %>
+            </a>
+          <% }) %>
+        </div>
+      </div>
+    </body>
+</html>

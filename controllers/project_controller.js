@@ -1,6 +1,6 @@
 const ProjectDetail = require("../models/projects.js");
 const ProjectPhotos = require("../models/project_photo.js");
-const Users = require("../models/user.js");
+const Users = require("../models/users.js");
 
 const controller = {
   async showProjectPage(req, res) {
