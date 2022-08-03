@@ -40,8 +40,12 @@ const controller = {
 
   //Method PUT: to update profile of specific ID
   async updateProfile(req, res) {
-    const currentUser = await Users.findByIdAndUpdate(req.params.user_id, req.body);
-    res.render("./profiles/profile_edit.ejs", { currentUser });
+    Users.findByIdAndUpdate(req.params.user_id, req.body, { new: true }, (err, product) => {
+      if (err) {
+        console.log(err);
+      }
+      res.redirect(`/profile/${currentUserId}`);
+    });
   },
 };
 module.exports = controller;

@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>aTom | New Project</title>
+    <%- include('../partials/generic_head') %>
+    <link rel="stylesheet" type="text/css" href="/styles/profile.css">
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <div class="container-fluid personal-data-form pt-3 mx-auto justify-content-center ">
+      <form action="/project-detail/new" method="POST">
+
+        <div class="row mx-auto align-items-center h-100 text-left px-5 gx-4">
+          <div class="card col-md-6 mb-4">
+            <div class="card-body form-outline">
+              <input type="text" name="profile_photos_url" id="profile_photos_url" class="form-control" placeholder="your profile image"/>
+              <label class="form-label" for="profile_photos_url">Profile Photo URL or Upload a Photo</label>
+              <i class="fa-solid fa-camera"></i>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="cover_photos_url" id="cover_photos_url" class="form-control" placeholder="choose the photo that show your interest field"/>
+              <label class="form-label" for="cover_photos_url">Cover Photo URL or Upload a Photo</label>
+              <i class="fa-solid fa-camera"></i>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="postal_code" id="postal_code" class="form-control" placeholder="Postal code"/>
+              <label class="form-label" for="postal_code">Postal Code</label>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="city" id="city" class="form-control" placeholder="City"/>
+              <label class="form-label" for="city">City</label>
+            </div>
+          </div>
+          <div class="card col-md-6 mb-4">
+            <div class="card-body form-outline">
+              <input type="text" name="job-title" id="job_title" class="form-control" placeholder="If you provied valious job, please separated by '|' "/>
+              <label class="form-label" for="job_title">Job Title</label>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="linkedIn" id="linkedIn" class="form-control" placeholder="linkedIn Link"/>
+              <label class="form-label" for="linkedIn">linkedIn Link</label>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="about_me" id="about_me" class="form-control" placeholder="About me"/>
+              <label class="form-label" for="about_me">About me</label>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="skills" id="skills" class="form-control" placeholder="List of Your skills ( separated by comma)"/>
+              <label class="form-label" for="skills">List of Your skills</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-inline mb-4 max-auto">
+            Submit
+          </button>
+        </div>
+
+      </form>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
