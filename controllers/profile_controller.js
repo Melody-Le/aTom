@@ -40,9 +40,8 @@ const controller = {
 
   //Method PUT: to update profile of specific ID
   async updateProfile(req, res) {
-    // const currentUser = await Users.findById(`${req.session?.currentUser._id}`);
-    // res.render("./profiles/profile_edit.ejs", { currentUser });
-    res.send("Done update");
+    const currentUser = await Users.findByIdAndUpdate(req.params.user_id, req.body);
+    res.render("./profiles/profile_edit.ejs", { currentUser });
   },
 };
 module.exports = controller;
