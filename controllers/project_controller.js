@@ -1,13 +1,15 @@
-const ProjectDetail = require("../models/projects.js");
-const ProjectPhotos = require("../models/project_photo.js");
+const Projects = require("../models/projects.js");
 const Users = require("../models/users.js");
 
 const controller = {
   async showProjectPage(req, res) {
-    const projectId = req.params.projects_id;
-    const project = await ProjectDetail.findOne({ _id: projectId }).populate("user_id");
-    const projectPhotos = await ProjectPhotos.find({ projects_id: projectId }, "photo_url");
-    res.render("./project-detail/index.ejs", { projectPhotos, project });
+    try {
+      const projectId = req.params.project_id;
+      const project = await Projects.findById(projectId).populate("author_id");
+      res.render("./projects/index.ejs", { project, project });
+    } catch (error) {
+      console.log(error.message);
+    }
   },
   newProjectForm(req, res) {
     res.render("./project-detail/project_new.ejs");
