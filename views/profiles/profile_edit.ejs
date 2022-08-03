@@ -8,6 +8,10 @@
     <%- include('../partials/navbar') %>
     <div class="container-fluid personal-data-form pt-3 mx-auto justify-content-center ">
       <form action="/profile/new" method="POST">
+      <form
+        action="/profile/<%=currentUserId%>?_method=PUT"
+        method="POST"
+      >
       <div class="row mx-auto align-items-center h-100 text-left px-5 gx-4">
           <div class="card col-md-6 mb-4">
             <div class="card-body form-outline">

@@ -11,7 +11,7 @@
         <% userList.forEach((user) => { %>
           <div class="col">
             <div class="card freelancer-card px-3">
-              <a href="/profile/<%= user?.cover_photos_url%>">
+              <a href="/profile/<%= user?._id%>">
                 <img src="<%= user.profile_photos_url %>" class="profile-image" alt="<%= user?.user_name%> profile photo">
               </a>
               <div class="card-body mt-5 p-0">

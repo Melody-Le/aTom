@@ -10,9 +10,10 @@ const authenticatedOnly = (req, res, next) => {
   res.redirect("/authenticated/login");
 };
 
-router.get("/new", authenticatedOnly, profileController.new);
-router.post("/new", authenticatedOnly, profileController.create);
-// router.edit("/user_id/edit", authenticatedOnly, profileController.create);
-router.get("/:user_id", authenticatedOnly, profileController.showProfilePage);
+router.get("/new", profileController.new);
+router.post("/new", profileController.create);
+router.put("/user_id", profileController.updateProfile);
+router.get("/:user_id/edit", profileController.editProfile);
+router.get("/:user_id", profileController.showProfilePage);
 
 module.exports = router;

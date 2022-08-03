@@ -11,7 +11,9 @@ a {
   background-image: url("/assets/images/background-2.jpeg");
   /* background-position: center; */
   background-repeat: no-repeat;
-  background: lightblue url("/assets/images/background-2.jpeg") no-repeat fixed center;
+  background: lightblue
+    url("https://images.pexels.com/photos/39348/musician-trumpet-metal-snowman-39348.jpeg?cs=srgb&dl=pexels-pixabay-39348.jpg&fm=jpg")
+    no-repeat fixed center;
   /* background-origin: content-box; */
   background-size: 100%;
   height: 100vh;

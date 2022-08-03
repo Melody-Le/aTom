@@ -3,18 +3,19 @@ const ProjectDetail = require("../models/project_detail.js");
 const { CLIENT_RENEG_LIMIT } = require("tls");
 
 const controller = {
+  //Method GET: to Show userProfile
   async showProfilePage(req, res) {
     const userId = req.params.user_id;
-    const userData = await Users.findOne({ _id: userId });
+    const currentUser = await Users.findOne({ _id: userId });
     const userProjectList = await ProjectDetail.find({ user_id: userId });
-    res.render("./profiles/index.ejs", { userData, userProjectList });
+    res.render("./profiles/index.ejs", { currentUser, userProjectList });
   },
-
+  //Method GET: to Show form for profile perofnal data
   new(req, res) {
     res.render("./profiles/profile_new.ejs");
   },
 
-  //Post data from Personal information Form
+  //Method POST: to Post data from Personal information Form
   async create(req, res) {
     const personalData = req.body;
     const currentUser = await Users.findById(`${req.session?.currentUser._id}`);
@@ -28,8 +29,20 @@ const controller = {
       profile_photos_url: personalData.profile_photos_url,
       cover_photos_url: personalData.cover_photos_url,
     });
-    console.log("Done");
     res.redirect(`/profile/${currentUser._id}`);
+  },
+
+  //Method GET: to Show form to edit profile:
+  async editProfile(req, res) {
+    const currentUserId = req.params.user_id;
+    res.render("./profiles/profile_edit.ejs", { currentUserId });
+  },
+
+  //Method PUT: to update profile of specific ID
+  async updateProfile(req, res) {
+    // const currentUser = await Users.findById(`${req.session?.currentUser._id}`);
+    // res.render("./profiles/profile_edit.ejs", { currentUser });
+    res.send("Done update");
   },
 };
 module.exports = controller;
