@@ -12,7 +12,7 @@ const authenticatedOnly = (req, res, next) => {
 
 router.get("/new", profileController.new);
 router.post("/new", profileController.create);
-router.put("/user_id", profileController.updateProfile);
+router.put("/:user_id", profileController.updateProfile);
 router.get("/:user_id/edit", profileController.editProfile);
 router.get("/:user_id", profileController.showProfilePage);
 

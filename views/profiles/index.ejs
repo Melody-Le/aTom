@@ -28,7 +28,7 @@
             <a href="#">
               <i class="fa-solid fa-message"></i>
             </a>
-            <a href="<%= currentUser.email%>">
+            <a href="mailto:<%= currentUser.email%>">
               <i class="fa-solid fa-envelope"></i>
             </a>
           </div>
@@ -53,12 +53,12 @@
       <div class="container-fluid mt-5">
         <div class="row">
           <h3 class="mr-auto">My Completed project</h3>
-          <a class="mx-1" href="#">
+          <a class="mx-1" href="/project-detail/new">
             <i class="fa-solid fa-file-circle-plus"></i>
           </a>
         </div>
         <div class="card-group row">
-          <% userProjectList.forEach((project) => { %>
+          <% projectList.forEach((project) => { %>
             <div class="card col-md-4 card-project">
               <div class="edit-project-icon">
                 <a href="#">

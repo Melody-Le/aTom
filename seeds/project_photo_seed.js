@@ -2,15 +2,15 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const projectPhoto = require("../models/project_photo");
 
-const user_id_1 = "62e72b143455ee46984e9e02";
-const user_id_2 = "62e72b143455ee46984e9e03";
-const user_id_3 = "62e72b143455ee46984e9e04";
-const project_id_1 = "62e73810030f434485f0b0c8";
-const project_id_2 = "62e73810030f434485f0b0c9";
-const project_id_3 = "62e73810030f434485f0b0ca";
-const project_id_4 = "62e73810030f434485f0b0cb";
-const project_id_5 = "62e73810030f434485f0b0cc";
-const project_id_6 = "62e73810030f434485f0b0cd";
+const user_id_1 = "62ea3c4590a7a73bf26f177a";
+const user_id_2 = "62ea3c4590a7a73bf26f177b";
+const user_id_3 = "62ea3c4590a7a73bf26f177c";
+const project_id_1 = "62ea3d526c49b6e29d5ab704";
+const project_id_2 = "62ea3d526c49b6e29d5ab705";
+const project_id_3 = "62ea3d526c49b6e29d5ab706";
+const project_id_4 = "62ea3d526c49b6e29d5ab707";
+const project_id_5 = "62ea3d526c49b6e29d5ab708";
+const project_id_6 = "62ea3d526c49b6e29d5ab709";
 
 const data = [
   {

@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>aTom | New Project</title>
+    <%- include('../partials/generic_head') %>
+    <link rel="stylesheet" type="text/css" href="/styles/profile.css">
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <div class="container-fluid personal-data-form pt-3 mx-auto justify-content-center ">
+      <form action="/project-detail/new" method="POST">
+
+        <div class="row mx-auto align-items-center h-100 text-left px-5 gx-4">
+          
+          <div class="card col-md-6 mb-4">
+            <div class="card-body form-outline">
+              <input type="text" name="project_name" id="project_name" class="form-control" placeholder="Project Name "/>
+              <label class="form-label" for="project_name">project Name</label>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="project_description" id="project_description" class="form-control" placeholder="Project Description"/>
+              <label class="form-label" for="project_description">Project Description</label>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="skils" id="skils" class="form-control" placeholder="Skills list"/>
+              <label class="form-label" for="skils">Skills you use for this project</label>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="skils" id="skils" class="form-control" placeholder="Skills list"/>
+              <label class="form-label" for="skils">Add project Photo</label>
+              <a class="mx-1" href="/project-photos/new">
+                <i class="fa-solid fa-file-circle-plus"></i>
+              </a>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-inline mb-4 max-auto">
+            Submit
+          </button>
+        </div>
+
+      </form>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
