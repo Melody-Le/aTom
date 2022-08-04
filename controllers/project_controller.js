@@ -12,7 +12,7 @@ const controller = {
     }
   },
   newProjectForm(req, res) {
-    res.render("./project-detail/project_new.ejs");
+    res.render("./projects/project_new.ejs");
   },
   async create(req, res) {
     // const personalData = req.body;
