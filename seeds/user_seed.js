@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-const user = require("../models/user.js");
+const user = require("../models/users.js");
 const project_id_1 = "62ea3d526c49b6e29d5ab704";
 const project_id_2 = "62ea3d526c49b6e29d5ab705";
 const project_id_3 = "62ea3d526c49b6e29d5ab706";
@@ -23,7 +23,7 @@ const data = [
       "Takes a broader approach to architecture that incorporates research, design thinking and technology to drive positive change for people and environments. Possesses broad competencies from architecture, interior and urban design, to branding, experience design, agile and lean business and management, with a keen interest in the circular economy and industry 4.0 developments.",
     profile_photos_url: "https://i.pinimg.com/564x/97/28/6c/97286c914f0906307803fca0e9ef94d2.jpg",
     cover_photos_url: "https://i.pinimg.com/564x/30/f3/65/30f365e5c2df89bc2813161592715bfd.jpg",
-    project_list: [project_id_1, project_id_2, project_id_3],
+    // projects: [project_id_1, project_id_2, project_id_3],
   },
   {
     user_name: "Carol Q",
@@ -39,7 +39,7 @@ const data = [
       "I'm a professional 3D artist and interior designer. I specialize in residential space planning, custom kitchen and bath design, and cohesive interiors. Having a multi-cultural background has allowed me to understand my client's needs and requirements, performing over 130 successful projects all around the globe. Overdeliver, overachieve, and outstanding are the three O's my clients always say about me. I'm always open to working opportunities and collaborations. Do not hesitate to contact me, we could do great things together!",
     profile_photos_url: "https://i.pinimg.com/564x/ea/9b/c6/ea9bc65fb7c880f715532880410a0f73.jpg",
     cover_photos_url: "https://i.pinimg.com/564x/1f/97/c1/1f97c1df051bde2435c3648f127be91e.jpg",
-    project_list: [project_id_4, project_id_5, project_id_6],
+    // projects: [project_id_4, project_id_5, project_id_6],
   },
   {
     user_name: "Joice L",

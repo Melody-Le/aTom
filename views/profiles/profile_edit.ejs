@@ -2,14 +2,14 @@
   <head>
     <title>aTom | Edit Profile</title>
     <%- include('../partials/generic_head') %>
-    <link rel="stylesheet" type="text/css" href="/styles/profile.css">
+    <link rel="stylesheet" type="text/css" href="/styles/profiles.css">
   </head>
   <body>
     <%- include('../partials/navbar') %>
     <div class="container-fluid personal-data-form pt-3 mx-auto justify-content-center ">
       PLEASE EDIT YOUR INFORMAITON
       <form
-        action="/profile/<%=currentUserId%>?_method=PUT"
+        action="/profiles/<%=currentUserId%>?_method=PUT"
         method="POST"
       >
       <div class="row mx-auto align-items-center h-100 text-left px-5 gx-4">

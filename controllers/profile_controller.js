@@ -1,5 +1,5 @@
-const Users = require("../models/user.js");
-const ProjectDetail = require("../models/project_detail.js");
+const Users = require("../models/users.js");
+const ProjectDetail = require("../models/projects.js");
 const ProjectPhotos = require("../models/project_photo.js");
 const { CLIENT_RENEG_LIMIT } = require("tls");
 
@@ -9,9 +9,9 @@ const controller = {
     const userId = req.params.user_id;
     // const currentUser = await await Users.findOne({ _id: userId });
     const currentUser = await (await Users.findOne({ _id: userId })).populate("project_list");
-    const projectIds = currentUser.project_list.map((project) => project._id);
-    // const projectPhotos = projectIds.map(projectId=> await ProjectPhotos.find({ project_detail_id: projectId }))
-    // const projectPhotos = await ProjectPhotos.find({ project_detail_id: proId }, "photo_url");
+    // const projectIds = currentUser.project_list.map((project) => project._id);
+    // const projectPhotos = projectIds.map(projectId=> await ProjectPhotos.find({ projects_id: projectId }))
+    // const projectPhotos = await ProjectPhotos.find({ projects_id: proId }, "photo_url");
     // console.log(projectPhotos);
     res.render("./profiles/index.ejs", { currentUser, projectList: currentUser.project_list });
   },
@@ -49,7 +49,7 @@ const controller = {
       if (err) {
         console.log(err);
       }
-      res.redirect(`/profile/${currentUserId}`);
+      res.redirect(`/profiles/${currentUserId}`);
     });
   },
 };

@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const Users = require("../models/user.js");
+const Users = require("../models/users.js");
 
 const controller = {
   async showRegistrationForm(req, res) {
@@ -42,7 +42,7 @@ const controller = {
             res.send("unable to save session");
             return;
           }
-          res.redirect(`/profile/new`);
+          res.redirect(`/profiles/new`);
         });
       });
     } catch (error) {
@@ -71,7 +71,7 @@ const controller = {
       // const currentUserID = req.session.currentUser._id;
       // res.redirect(`/idea-market`);
       console.log(req.session.currentUser._id);
-      res.redirect(`/profile/${req.session.currentUser._id}`); //BUG: I can not re-rdirect to this page
+      res.redirect(`/profiles/${req.session.currentUser._id}`); //BUG: I can not re-rdirect to this page
     } catch (err) {
       console.log(err.message);
       return;

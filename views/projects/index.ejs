@@ -1,8 +1,8 @@
 <html>
   <head>
     <title>aTom | Project</title>
-    <link rel="stylesheet" type="text/css" href="/styles/project_detail.css">
     <%- include('../partials/generic_head') %>
+    <link rel="stylesheet" type="text/css" href="/styles/projects.css">
   </head>
   <body>
     <%- include('../partials/navbar') %>
@@ -10,25 +10,25 @@
       <div class="container-fluid">
         <div class="project-title row">
           <div class="d-flex">
-            <h2 class="mr-auto"><%= projectDetail.project_name %></h2>
-            <a href="#">
+            <h2 class="mr-auto"><%= project.project_name %></h2>
+            <a href="/">
               <i class="fa-solid fa-file-pen"></i>
             </a>
           </div>
           <figure class="user-profile-box mb-0">
-            <a href="/profile/<%= projectDetail.user_id._id%>">
-              <img class="user-profile-image" src="<%= projectDetail.user_id.profile_photos_url%>" alt="<%= projectDetail.user_id.user_name%>  profile photo">
+            <a href="/profiles/<%= project.author_id._id %>">
+              <img class="user-profile-image" src="<%= project.author_id.profile_photos_url %>" alt="<%= project.author_id.user_name %>  profile photo">
             </a>
             <div>
               <div class="stars-outer">
                 <div class="stars-inner" style="width:80%"></div>
               </div>
               <div>
-                <p class="mb-0"><%= projectDetail.user_id.user_name%></p>
+                <p class="mb-0"><%= project.author_id.user_name %></p>
                 <a href="#">
                   <i class="fa-solid fa-message"></i>
                 </a>
-                <a href="mailto:<%= projectDetail.user_id.email%>">
+                <a href="mailto:<%= project.author_id.email %>">
                   <i class="fa-solid fa-envelope"></i>
                 </a>
               </div>
@@ -37,7 +37,7 @@
           <div class="mt-3">
             <h6>Provided Skill</h6>
             <ul class="container list-inline px-0">
-              <% projectDetail?.skills.forEach((skill) => { %>
+              <% project.skills.forEach((skill) => { %>
                 <li class="list-inline-item mx-0 rounded"><%= skill %></li>
               <% }) %>
             </ul>
@@ -46,15 +46,14 @@
       </div>
       <div class="container-fluid mt-5">
         <h3>Project Description:</h3>
-        <%= projectDetail.project_description %>
+        <%= project.project_description %>
       </div>
       <div class="container-fluid mt-5">
         <h3>Project photos:</h3>
         <div class="project-photos">
-          <% projectPhotos.forEach((photo) => { %>
+          <% project.photos.forEach((photo) => { %>
             <div class="project-photo">
-              <img class="d-block w-100" src="<%= photo?.photo_url %>" alt="photo-1">
-              <p class="photo-name">Random photo</p>
+              <img class="d-block w-100" src="<%= photo %>" alt="photo of project <%= project.project_name %>">
             </div>
           <% }) %>
         </div>
