@@ -38,7 +38,7 @@ app.use("/authenticated", authenticatedRouter);
 // app.use("/idea-market", projectPhotoRouter);
 app.use("/", pageRouter);
 app.use("/projects", projectRouter);
-app.use("/profile", profileRouter);
+app.use("/profiles", profileRouter);
 //TODO: remember to update the below code, navigate it to login page
 app.get("/", (req, res) => res.redirect("/authenticated/login"));
 

@@ -1,19 +1,20 @@
 const Users = require("../models/users.js");
-const ProjectDetail = require("../models/projects.js");
-const ProjectPhotos = require("../models/project_photo.js");
+const Projects = require("../models/projects.js");
+// const ProjectPhotos = require("../models/project_photo.js");
 const { CLIENT_RENEG_LIMIT } = require("tls");
 
 const controller = {
   //Method GET: to Show userProfile
   async showProfilePage(req, res) {
-    const userId = req.params.user_id;
-    // const currentUser = await await Users.findOne({ _id: userId });
-    const currentUser = await (await Users.findOne({ _id: userId })).populate("project_list");
-    // const projectIds = currentUser.project_list.map((project) => project._id);
-    // const projectPhotos = projectIds.map(projectId=> await ProjectPhotos.find({ projects_id: projectId }))
-    // const projectPhotos = await ProjectPhotos.find({ projects_id: proId }, "photo_url");
-    // console.log(projectPhotos);
-    res.render("./profiles/index.ejs", { currentUser, projectList: currentUser.project_list });
+    try {
+      const userId = req.params.user_id;
+      const currentUser = await await Users.findOne({ _id: userId });
+      const projects = await Projects.find({ author_id: userId });
+      res.render("./profiles/index.ejs", { currentUser, projects });
+    } catch (error) {
+      console.log(error);
+      return;
+    }
   },
   //Method GET: to Show form for profile perofnal data
   new(req, res) {
