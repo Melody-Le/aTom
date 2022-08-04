@@ -5,10 +5,8 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const session = require("express-session");
 
-// const setRoutes = require("./setRoutes");
 //NOTE: ROUTER:
 const authenticatedRouter = require("./routers/authenticated_router");
-// const projectPhotoRouter = require("./routers/project_photo_router");
 const projectRouter = require("./routers/project_router");
 const profileRouter = require("./routers/profile_router");
 const pageRouter = require("./routers/page_router");
@@ -40,7 +38,7 @@ app.use("/authenticated", authenticatedRouter);
 // app.use("/idea-market", projectPhotoRouter);
 app.use("/", pageRouter);
 app.use("/projects", projectRouter);
-app.use("/profile", profileRouter);
+app.use("/profiles", profileRouter);
 //TODO: remember to update the below code, navigate it to login page
 app.get("/", (req, res) => res.redirect("/authenticated/login"));
 

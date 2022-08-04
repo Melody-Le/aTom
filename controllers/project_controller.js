@@ -31,5 +31,10 @@ const controller = {
     const currentUser = await Users.findById(`${req.session?.currentUser._id}`);
     res.send("Created Project");
   },
+  //Method GET: to Show form to edit profile:
+  editProject(req, res) {
+    const projectId = req.params.project_id;
+    res.render("./projects/project_edit.ejs", { projectId });
+  },
 };
 module.exports = controller;

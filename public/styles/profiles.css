@@ -47,9 +47,13 @@ a {
   content: "\f005 \f005 \f005 \f005 \f005";
   color: #ca1880;
 }
+.about-me {
+  white-space: pre-wrap;
+}
 .project-description {
   height: 10rem;
   overflow-y: scroll;
+  white-space: pre-wrap;
 }
 .card-project {
   position: relative;
