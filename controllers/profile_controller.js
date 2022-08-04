@@ -35,7 +35,7 @@ const controller = {
       profile_photos_url: personalData.profile_photos_url,
       cover_photos_url: personalData.cover_photos_url,
     });
-    res.redirect(`/profile/${currentUser._id}`);
+    res.redirect(`/profiles/${currentUser._id}`);
   },
 
   //Method GET: to Show form to edit profile:
