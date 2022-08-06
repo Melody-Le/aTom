@@ -7,20 +7,23 @@
   <body>
     <%- include('../partials/navbar') %>
     <div class="container mt-5 ">
+      <% if (profileOwner._id == currentUser._id) { %>
+        <div>Hii <%= profileOwner.user_name%></div>
+      <% } %>  
       <div class="row">
-        <img class="user-profile-image img-fluid col-sm-2" src="<%= currentUser.profile_photos_url%>" alt="<%= currentUser.user_name%> profile photo">
+        <img class="user-profile-image img-fluid col-sm-2" src="<%= profileOwner.profile_photos_url%>" alt="<%= profileOwner.user_name%> profile photo">
         <div class="user-information-header col-sm-9">
           <div>
             <div class="d-flex">
-              <h2 class="mr-auto"><%= currentUser.user_name%></h2>
-              <a href="/profiles/<%= currentUser._id%>/edit">
+              <h2 class="mr-auto"><%= profileOwner.user_name%></h2>
+              <a href="/profiles/<%= profileOwner._id%>/edit">
                 <i class="fa-solid fa-file-pen"></i>
               </a>
             </div>
-            <h5><%= currentUser.job_title%></h5>
+            <h5><%= profileOwner.job_title%></h5>
             <p>
               <i class="fa-solid fa-location-dot"></i>
-              <%= currentUser.city%>
+              <%= profileOwner.city%>
             </p>
             <div class="stars-outer">
               <div class="stars-inner" style="width:80%"></div>
@@ -28,15 +31,15 @@
             <a href="#">
               <i class="fa-solid fa-message"></i>
             </a>
-            <a href="mailto:<%= currentUser.email%>">
+            <a href="mailto:<%= profileOwner.email%>">
               <i class="fa-solid fa-envelope"></i>
             </a>
           </div>
           <div>
-            <a href="<%= currentUser.linkedIn%>">LindedIn Link</a>
+            <a href="<%= profileOwner.linkedIn%>">LindedIn Link</a>
             <h6>Skill</h6>
             <ul class=" container list-inline px-0 mb-0">
-              <% currentUser?.skills.forEach((skill) => { %>
+              <% profileOwner?.skills.forEach((skill) => { %>
                 <li class="list-inline-item mx-0 rounded"><%= skill%></li>
               <% }) %>
             </ul>
@@ -47,7 +50,7 @@
       <div class="container mt-5">
         <h3>About me:</h3>
         <p class="about-me">
-          <%= currentUser.about_me%>
+          <%= profileOwner.about_me%>
         </p>
       </div>
       <div class="container-fluid mt-5">
