@@ -10,10 +10,9 @@ module.exports = {
   setUserVarMiddleware: (req, res, next) => {
     res.locals.authUser = null;
 
-    console.log(req.session);
     if (req?.session?.currentUser) {
       res.locals.authUser = req.session.currentUser;
-    } else console.log("hehe");
+    }
     next();
   },
 };

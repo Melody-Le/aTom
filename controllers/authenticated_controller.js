@@ -73,5 +73,24 @@ const controller = {
       return;
     }
   },
+  async logout(req, res) {
+    req.session.user = null;
+
+    req.session.save(function (err) {
+      if (err) {
+        res.redirect("/users/login");
+        return;
+      }
+
+      req.session.regenerate(function (err) {
+        if (err) {
+          res.redirect("/authenticated/login");
+          return;
+        }
+
+        res.redirect("/");
+      });
+    });
+  },
 };
 module.exports = controller;
