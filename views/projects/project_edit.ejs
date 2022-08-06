@@ -42,11 +42,11 @@
               <div class="row row-cols-md-3 g-3">
                 <% project.photos.forEach((photo, photoIndex) => { %>
                   <div class="current-photo col">
-                    <div class="btn-delete">
-                      <a href="/projects/<%= project._id %>/delete/<%= photoIndex %>">
+                    <form action="/projects/<%= project._id %>/<%= photoIndex %>/delete?_method=DELETE" method="POST">
+                      <button class="btn-delete">
                         <i class="fa-solid fa-trash-can"></i>
-                      </a>
-                    </div>
+                      </button>
+                    </form>
                     <img
                       src="<%= photo %>"
                       class="col w-100"
