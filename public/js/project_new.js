@@ -11,14 +11,12 @@ const onAddPhotoClick = (evnt) => {
 const onSkillInputEnter = (evnt) => {
   const inputSkillDom = document.querySelector(".input-skill");
   const htmlInputSkill = `
-  <input type="text" name="skils" id="skills" class="form-control input-skill" placeholder="Add Skill"/>
+    <input type="text" name="skills" value = "${inputSkillDom.value}" class="form-control input-skill d-inline"/>
   `;
   if (evnt.key === "Enter") {
     document.querySelector(".input-skill-container").insertAdjacentHTML("beforeend", htmlInputSkill);
     inputSkillDom.value = "";
     evnt.preventDefault();
-  } else {
-    document.querySelector(".skill-enter").innerHTML = inputSkillDom.value;
   }
 };
 

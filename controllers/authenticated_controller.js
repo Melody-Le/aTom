@@ -36,7 +36,6 @@ const controller = {
           return;
         }
         req.session.currentUser = newUser;
-        console.log(req.session);
         req.session.save(function (err) {
           if (err) {
             res.send("unable to save session");
@@ -56,7 +55,6 @@ const controller = {
     try {
       let errorMsg = null;
       const { email, password } = req.body;
-      console.log(req.body);
       const foundUser = await Users.findOne({ email: req.body.email });
       if (!foundUser) {
         errorMsg = "Account dont have";
@@ -70,7 +68,6 @@ const controller = {
       req.session.currentUser = foundUser;
       // const currentUserID = req.session.currentUser._id;
       // res.redirect(`/idea-market`);
-      console.log(req.session.currentUser._id);
       res.redirect(`/profiles/${req.session.currentUser._id}`); //BUG: I can not re-rdirect to this page
     } catch (err) {
       console.log(err.message);
