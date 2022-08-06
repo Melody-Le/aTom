@@ -19,13 +19,15 @@ const controller = {
   },
   //Method GET: to Show form for profile perofnal data
   new(req, res) {
-    res.render("./profiles/profile_new.ejs");
+    const profileOwnerId = req.params.user_id;
+    res.render("./profiles/profile_new.ejs", { profileOwnerId });
   },
 
   //Method POST: to Post data from Personal information Form
   async create(req, res) {
     const personalData = req.body;
-    const profileOwner = await Users.findById(`${req.session?.profileOwner._id}`);
+    const profileOwnerId = req.params.user_id;
+    const profileOwner = await Users.findById(profileOwnerId);
     await profileOwner.updateOne({ personalData });
     res.redirect(`/profiles/${profileOwner._id}`);
   },
