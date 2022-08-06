@@ -1,44 +1,69 @@
 <html>
   <head>
-    <title>aTom | New Project</title>
+    <title>aTom | Edit Project</title>
     <%- include('../partials/generic_head') %>
-    <link rel="stylesheet" type="text/css" href="/styles/profiles.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/styles/idea_market.css"> -->
   </head>
   <body>
     <%- include('../partials/navbar') %>
     <div class="container-fluid personal-data-form pt-3 mx-auto justify-content-center ">
       <form
-        action="/projects/<%=projectId%>?_method=PUT"
+        action="/projects/<%=project._id%>?_method=PUT"
         method="POST"
       >
         <div class="row mx-auto align-items-center h-100 text-left px-5 gx-4">
           <div class="card col-md-6 mb-4">
             <div class="card-body form-outline">
-              <input type="text" name="project_name" id="project_name" class="form-control" placeholder="Project Name "/>
               <label class="form-label" for="project_name">project Name</label>
+              <input type="text" name="project_name" value="<%=project.project_name%>" class="form-control"/>
             </div>
+
             <div class="card-body form-outline">
-              <input type="text" name="project_description" id="project_description" class="form-control" placeholder="Project Description"/>
               <label class="form-label" for="project_description">Project Description</label>
+              <input type="text" name="project_description" value="<%=project.project_description%>" class="form-control" placeholder="Project Description"/>
             </div>
-            <div class="card-body form-outline">
-              <input type="text" name="skils" id="skils" class="form-control" placeholder="Skills list"/>
-              <label class="form-label" for="skils">Skills you use for this project</label>
+
+            <div class="card-body form-outline input-skill-container">
+              <label class="form-label" for="skills">Skills you use for this project</label>
+              <input type="text" name="skils" class="form-control input-skill"/>
             </div>
-            <div class="card-body form-outline">
-              <input type="text" name="skils" id="skils" class="form-control" placeholder="Skills list"/>
-              <label class="form-label" for="skils">Add project Photo</label>
-              <a class="mx-1" href="/project-photos/new">
-                <i class="fa-solid fa-file-circle-plus"></i>
-              </a>
+
+            <div class="card-body form-outline add-photo-container">
+              <!-- ADD PHOTO CONTAINER  -->
             </div>
-          </div>
+            <div class="add-photo mx-1">
+              <i class="fa-solid fa-file-circle-plus"></i>
+              <p>Add More photo?</p>
+            </div>
+            </div>
+
+            <div class="current-photo-container">
+              Current Image
+              <div class="row row-cols-md-3 g-3">
+                <% project.photos.forEach((photo, photoIndex) => { %>
+                  <div class="current-photo col">
+                    <div class="btn-delete">
+                      <a href="/projects/<%= project._id %>/delete/<%= photoIndex %>">
+                        <i class="fa-solid fa-trash-can"></i>
+                      </a>
+                    </div>
+                    <img
+                      src="<%= photo %>"
+                      class="col w-100"
+                      id="<%= project._id %>-photo-<%= photoIndex %>"
+                      alt="photo of project id <%= project._id %>"
+                    />
+                  </div>
+                <% }) %>
+              </div>
+            </div>
           <button type="submit" class="btn btn-inline mb-4 max-auto">
             Submit
           </button>
         </div>
       </form>
     </div>
+    <script src="/js/project_new.js"></script>
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>

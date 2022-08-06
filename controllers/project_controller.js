@@ -26,9 +26,25 @@ const controller = {
   },
 
   //Method GET: to Show form to edit profile:
-  editProject(req, res) {
+  async editProject(req, res) {
     const projectId = req.params.project_id;
-    res.render("./projects/project_edit.ejs", { projectId });
+    const project = await Projects.findById(projectId);
+    res.render("./projects/project_edit.ejs", { project });
+  },
+
+  //Method PUT: to update project of specific ID
+  async updateProject(req, res) {
+    const projectId = req.params.project_id;
+    Projects.findByIdAndUpdate(projectId, req.body, { new: true }, (err, product) => {
+      if (err) {
+        console.log(err);
+      }
+      res.redirect(`/projects/${projectId}`);
+    });
+  },
+  //Method DELETE:  delete photo
+  async deletePhoto(req, res) {
+    res.send("delete");
   },
 };
 module.exports = controller;
