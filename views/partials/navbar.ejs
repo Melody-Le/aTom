@@ -14,27 +14,34 @@
     </button>
     <div class="offcanvas-md offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <ul class="navbar-nav">
-        <% if (authenticatedUser) { %>
-          <li class="nav-item">
-            <a class="nav-link active" href="/freelancer-community" id="freelancer-community-page">Freelancer Comunity</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="/idea-market" id="idea-market-page">Idea Market</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#!">Log Out</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="/profiles/:user_id" id="profile-page">Profile</a>
-          </li>
-        <% } %>
-        <% if (!authenticatedUser) { %>
-          <li class="nav-item">
-            <a class="nav-link active" href="/authenticated/login" id="login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="/authenticated/register" id="register">Register</a>
-          </li>
+        <% if (authUser) { %>
+        <li class="nav-item my-auto">
+          <a class="nav-link active" href="/freelancer-community" id="freelancer-community-page">Freelancer Comunity</a>
+        </li>
+        <li class="nav-item my-auto">
+          <a class="nav-link active" href="/idea-market" id="idea-market-page">Idea Market</a>
+        </li>
+        <li class="nav-item my-auto">
+          <a class="nav-link" href="#!">Log Out</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/profiles/<%= authUser._id %> " id="profile-page">
+            <img
+              class="rounded-circle"
+              src="<%= authUser.profile_photos_url%>"
+              alt="<%= authUser.user_name%> profile photo"
+              style="height: 3rem; width: 3rem; object-fit: cover;"
+            />
+          </a>
+        </li>
+        <% } else { %>
+
+        <li class="nav-item my-auto">
+          <a class="nav-link active" href="/authenticated/login" id="login">Login</a>
+        </li>
+        <li class="nav-item my-auto">
+          <a class="nav-link active" href="/authenticated/register" id="register">Register</a>
+        </li>
         <% } %>
       </ul>
     </div>

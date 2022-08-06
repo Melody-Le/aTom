@@ -6,7 +6,7 @@ const controller = {
     try {
       const projectId = req.params.project_id;
       const project = await Projects.findById(projectId).populate("author_id");
-      res.render("./projects/index.ejs", { project, project });
+      res.render("./projects/index.ejs", { project });
     } catch (error) {
       console.log(error.message);
     }
@@ -27,6 +27,7 @@ const controller = {
 
   //Method GET: to Show form to edit profile:
   async edit(req, res) {
+    const authenticatedUser = req.session.currentUser;
     const projectId = req.params.project_id;
     const project = await Projects.findById(projectId);
     res.render("./projects/project_edit.ejs", { project });

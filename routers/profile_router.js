@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const profileController = require("../controllers/profile_controller.js");
-const { authenticatedOnly } = require("../middlewares/middleware");
+const { authenticatedOnly } = require("../middlewares/auth_middleware");
 
 router.get("/:user_id/new", authenticatedOnly, profileController.new);
 router.post("/:user_id/new", authenticatedOnly, profileController.create);

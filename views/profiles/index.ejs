@@ -7,7 +7,7 @@
   <body>
     <%- include('../partials/navbar') %>
     <div class="container mt-5 ">
-      <% if (profileOwner._id == currentUser._id) { %>
+      <% if (profileOwner._id == authenticatedUser._id) { %>
         <h2>Hi <%= profileOwner.user_name%></h2>
       <% } %>  
       <div class="row">
@@ -16,7 +16,7 @@
           <div>
             <div class="d-flex">
               <h2 class="mr-auto"><%= profileOwner.user_name%></h2>
-              <% if (profileOwner._id == currentUser._id) { %>
+              <% if (profileOwner._id == authenticatedUser._id) { %>
                 <a href="/profiles/<%= profileOwner._id%>/edit">
                   <i class="fa-solid fa-file-pen"></i>
                 </a>
@@ -58,7 +58,7 @@
       <div class="container-fluid mt-5">
         <div class="row">
           <h3 class="mr-auto">My Completed project</h3>
-          <% if (profileOwner._id == currentUser._id) { %>
+          <% if (profileOwner._id == authenticatedUser._id) { %>
             <a class="mx-1" href="/projects/new">
               <i class="fa-solid fa-file-circle-plus"></i>
             </a>
@@ -67,7 +67,7 @@
         <div class="card-group row">
           <% projects.forEach((project) => { %> 
             <div class="card col-md-4 card-project">
-              <% if (profileOwner._id == currentUser._id) { %>
+              <% if (profileOwner._id == authenticatedUser._id) { %>
                 <div class="edit-project-icon">
                   <a href="/projects/<%= project._id %>/edit">
                     <i class="fa-solid fa-file-pen p-2"></i>
