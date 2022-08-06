@@ -59,5 +59,11 @@ const controller = {
     await project.save();
     res.redirect(`/projects/${project_id}/edit`);
   },
+
+  async deleteSkill(req, res) {
+    console.log(req.params);
+    console.log("delete skill");
+    res.send("Delete skill");
+  },
 };
 module.exports = controller;

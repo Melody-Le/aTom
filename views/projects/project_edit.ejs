@@ -2,7 +2,7 @@
   <head>
     <title>aTom | Edit Project</title>
     <%- include('../partials/generic_head') %>
-    <!-- <link rel="stylesheet" type="text/css" href="/styles/idea_market.css"> -->
+    <link rel="stylesheet" type="text/css" href="/styles/projects.css">
   </head>
   <body>
     <%- include('../partials/navbar') %>
@@ -26,6 +26,19 @@
             <div class="card-body form-outline input-skill-container">
               <label class="form-label" for="skills">Skills you use for this project</label>
               <input type="text" name="skils" class="form-control input-skill"/>
+              <div class="current-skills-container">
+                <div>Current Skills:</div>
+                <ul class="container list-inline px-0">
+                  <% project.skills.forEach((skill, skillIndex) => { %>
+                    <form action="/projects/<%= project._id %>/<%= skillIndex %>/delete-skill?_method=DELETE" method="POST">
+                      <button class="btn-delete">
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </form>
+                    <li class="list-inline-item mx-0 rounded"><%= skill %></li>
+                  <% }) %>
+                </ul>
+              </div>
             </div>
 
             <div class="card-body form-outline add-photo-container">
@@ -42,7 +55,7 @@
               <div class="row row-cols-md-3 g-3">
                 <% project.photos.forEach((photo, photoIndex) => { %>
                   <div class="current-photo col">
-                    <form action="/projects/<%= project._id %>/<%= photoIndex %>/delete?_method=DELETE" method="POST">
+                    <form action="/projects/<%= project._id %>/<%= photoIndex %>/delete-photo?_method=DELETE" method="POST">
                       <button class="btn-delete">
                         <i class="fa-solid fa-trash-can"></i>
                       </button>
@@ -64,6 +77,5 @@
       </form>
     </div>
     <script src="/js/project_new.js"></script>
-    <%- include('../partials/footer.ejs') %>
   </body>
 </html>
