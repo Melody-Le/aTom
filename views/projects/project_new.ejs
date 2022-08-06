@@ -7,10 +7,8 @@
   <body>
     <%- include('../partials/navbar') %>
     <div class="container-fluid personal-data-form pt-3 mx-auto justify-content-center ">
-      <form action="/project-detail/new" method="POST">
-
+      <form action="/projects/new" method="POST">
         <div class="row mx-auto align-items-center h-100 text-left px-5 gx-4">
-          
           <div class="card col-md-6 mb-4">
             <div class="card-body form-outline">
               <input type="text" name="project_name" id="project_name" class="form-control" placeholder="Project Name "/>
@@ -20,19 +18,20 @@
               <input type="text" name="project_description" id="project_description" class="form-control" placeholder="Project Description"/>
               <label class="form-label" for="project_description">Project Description</label>
             </div>
-            <div class="card-body form-outline">
-              <input type="text" name="skils" id="skils" class="form-control" placeholder="Skills list"/>
-              <label class="form-label" for="skils">Skills you use for this project</label>
+            <div class="card-body form-outline input-skill-container">
+              <input type="text" name="skils" class="form-control input-skill"/>
             </div>
-            <div class="card-body form-outline">
-              <input type="text" name="skils" id="skils" class="form-control" placeholder="Skills list"/>
-              <label class="form-label" for="skils">Add project Photo</label>
-              <a class="mx-1" href="/project-photos/new">
-                <i class="fa-solid fa-file-circle-plus"></i>
-              </a>
+            <label class="form-label" for="skills">Skills you use for this project</label>
+
+            <div class="card-body form-outline add-photo-container">
+              <!-- ADD PHOTO CONTAINER  -->
             </div>
+            <div class="add-photo mx-1">
+              <i class="fa-solid fa-file-circle-plus"></i>
+            </div>
+            <label class="form-label" for="photos">Add project Photo</label>
           </div>
-          <button type="submit" class="btn btn-inline mb-4 max-auto">
+          <button type="submit" class="btn mb-4 text-white bg-danger">
             Submit
           </button>
         </div>
@@ -40,5 +39,6 @@
       </form>
     </div>
     <%- include('../partials/footer.ejs') %>
+    <script src="/js/project_new.js"></script>
   </body>
 </html>

@@ -11,26 +11,20 @@ const controller = {
       console.log(error.message);
     }
   },
+  //Method GET
   newProjectForm(req, res) {
-    res.render("./project-detail/project_new.ejs");
+    res.render("./projects/project_new.ejs");
   },
+
+  //Method POST: to create new project
   async create(req, res) {
-    // const personalData = req.body;
-    // await currentUser.updateOne({
-    //   job_title: personalData.job_title,
-    //   postal_code: personalData.postal_code,
-    //   city: personalData.city,
-    //   linkedIn: personalData.linkedIn,
-    //   skills: personalData.skills,
-    //   about_me: personalData.about_me,
-    //   profile_photos_url: personalData.profile_photos_url,
-    //   cover_photos_url: personalData.cover_photos_url,
-    // });
-    // res.redirect(`/profile/${currentUser._id}`);
     const projectData = req.body;
-    const currentUser = await Users.findById(`${req.session?.currentUser._id}`);
-    res.send("Created Project");
+    const currentUser = await Users.findById(`${req.session?.currentUser?._id}`);
+    projectData.author_id = currentUser._id;
+    const newProject = await Projects.create(projectData);
+    res.redirect(`/projects/${newProject._id}`);
   },
+
   //Method GET: to Show form to edit profile:
   editProject(req, res) {
     const projectId = req.params.project_id;

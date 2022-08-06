@@ -25,17 +25,8 @@ const controller = {
   async create(req, res) {
     const personalData = req.body;
     const currentUser = await Users.findById(`${req.session?.currentUser._id}`);
-    await currentUser.updateOne({
-      job_title: personalData.job_title,
-      postal_code: personalData.postal_code,
-      city: personalData.city,
-      linkedIn: personalData.linkedIn,
-      skills: personalData.skills,
-      about_me: personalData.about_me,
-      profile_photos_url: personalData.profile_photos_url,
-      cover_photos_url: personalData.cover_photos_url,
-    });
-    res.redirect(`/profile/${currentUser._id}`);
+    await currentUser.updateOne({ personalData });
+    res.redirect(`/profiles/${currentUser._id}`);
   },
 
   //Method GET: to Show form to edit profile:
