@@ -67,5 +67,15 @@ const controller = {
     await project.save();
     res.redirect(`/projects/${project_id}/edit`);
   },
+  async deleteProject(req, res) {
+    const projectId = req.params.project_id;
+    const profileOwnerId = req.session.currentUser._id;
+    try {
+      await Projects.findByIdAndRemove(projectId);
+      res.redirect(`/profiles/${profileOwnerId}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
 module.exports = controller;
