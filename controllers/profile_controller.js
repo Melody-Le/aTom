@@ -25,15 +25,15 @@ const controller = {
   //Method POST: to Post data from Personal information Form
   async create(req, res) {
     const personalData = req.body;
-    const currentUser = await Users.findById(`${req.session?.currentUser._id}`);
-    await currentUser.updateOne({ personalData });
-    res.redirect(`/profiles/${currentUser._id}`);
+    const profileOwner = await Users.findById(`${req.session?.profileOwner._id}`);
+    await profileOwner.updateOne({ personalData });
+    res.redirect(`/profiles/${profileOwner._id}`);
   },
 
   //Method GET: to Show form to edit profile:
   async editProfile(req, res) {
-    const currentUser = await Users.findById(req.params.user_id);
-    res.render("./profiles/profile_edit.ejs", { currentUser });
+    const profileOwner = await Users.findById(req.params.user_id);
+    res.render("./profiles/profile_edit.ejs", { profileOwner });
   },
 
   //Method PUT: to update profile of specific ID
