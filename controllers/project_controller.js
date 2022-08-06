@@ -62,9 +62,11 @@ const controller = {
   },
 
   async deleteSkill(req, res) {
-    console.log(req.params);
-    console.log("delete skill");
-    res.send("Delete skill");
+    const { project_id, skillIndex } = req.params;
+    const project = await Projects.findById(project_id);
+    project.skills.splice(skillIndex, 1);
+    await project.save();
+    res.redirect(`/projects/${project_id}/edit`);
   },
 };
 module.exports = controller;
