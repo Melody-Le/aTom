@@ -11,7 +11,7 @@ const controller = {
       console.log(error.message);
     }
   },
-
+  //Method GET
   newProjectForm(req, res) {
     res.render("./projects/project_new.ejs");
   },

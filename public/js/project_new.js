@@ -2,7 +2,7 @@ const onAddPhotoClick = (evnt) => {
   evnt.preventDefault();
   const addPhotoDom = document.querySelector(".add-photo");
   const htmlInputAddPhoto = `
-    <input type="text" name="photos" id="photo" class="form-control mt-3" placeholder="Photo Url"/>
+    <input type="text" name="photos" class="form-control mt-3" placeholder="Photo Url"/>
   `;
   document.querySelector(".add-photo-container").insertAdjacentHTML("beforeend", htmlInputAddPhoto);
   addPhotoDom.value = "";
