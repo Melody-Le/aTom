@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.current-photo {
+  position: relative;
+}
+.btn-delete {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+}

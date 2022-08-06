@@ -26,9 +26,47 @@ const controller = {
   },
 
   //Method GET: to Show form to edit profile:
-  editProject(req, res) {
+  async edit(req, res) {
     const projectId = req.params.project_id;
-    res.render("./projects/project_edit.ejs", { projectId });
+    const project = await Projects.findById(projectId);
+    res.render("./projects/project_edit.ejs", { project });
+  },
+
+  //Method PUT: to update project of specific ID
+  async update(req, res) {
+    const projectId = req.params.project_id;
+    const projectUpdate = req.body;
+    const newPhotos = projectUpdate.photos;
+    const newSkills = projectUpdate.skills;
+    const oldProject = await Projects.findById(projectId);
+    const oldProjectPhotos = oldProject.photos;
+    const oldSkills = oldProject.skills;
+    projectUpdate.photos = oldProjectPhotos.concat(newPhotos);
+    projectUpdate.skills = oldSkills.concat(newSkills);
+
+    projectUpdate.skills = Projects.findByIdAndUpdate(projectId, projectUpdate, { new: true }, (err, product) => {
+      if (err) {
+        console.log(err);
+      }
+      res.redirect(`/projects/${projectId}`);
+    });
+  },
+
+  //Method DELETE:  delete photo
+  async deletePhoto(req, res) {
+    const { project_id, photoIndex } = req.params;
+    const project = await Projects.findById(project_id);
+    project.photos.splice(photoIndex, 1);
+    await project.save();
+    res.redirect(`/projects/${project_id}/edit`);
+  },
+
+  async deleteSkill(req, res) {
+    const { project_id, skillIndex } = req.params;
+    const project = await Projects.findById(project_id);
+    project.skills.splice(skillIndex, 1);
+    await project.save();
+    res.redirect(`/projects/${project_id}/edit`);
   },
 };
 module.exports = controller;
