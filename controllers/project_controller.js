@@ -36,7 +36,15 @@ const controller = {
   async updateProject(req, res) {
     const projectId = req.params.project_id;
     const projectUpdate = req.body;
-    Projects.findByIdAndUpdate(projectId, projectUpdate, { new: true }, (err, product) => {
+    const newPhotos = projectUpdate.photos;
+    const newSkills = projectUpdate.skills;
+    const oldProject = await Projects.findById(projectId);
+    const oldProjectPhotos = oldProject.photos;
+    const oldSkills = oldProject.skills;
+    projectUpdate.photos = oldProjectPhotos.concat(newPhotos);
+    projectUpdate.skills = oldSkills.concat(newSkills);
+
+    projectUpdate.skills = Projects.findByIdAndUpdate(projectId, projectUpdate, { new: true }, (err, product) => {
       if (err) {
         console.log(err);
       }
