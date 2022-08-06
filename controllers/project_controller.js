@@ -19,8 +19,8 @@ const controller = {
   //Method POST: to create new project
   async create(req, res) {
     const projectData = req.body;
-    const currentUser = await Users.findById(`${req.session?.currentUser?._id}`);
-    projectData.author_id = currentUser._id;
+    const profileOwner = await Users.findById(`${req.session?.currentUser?._id}`);
+    projectData.author_id = profileOwner._id;
     const newProject = await Projects.create(projectData);
     res.redirect(`/projects/${newProject._id}`);
   },
