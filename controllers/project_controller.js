@@ -43,7 +43,6 @@ const controller = {
     const oldSkills = oldProject.skills;
     projectUpdate.photos = oldProjectPhotos.concat(newPhotos);
     projectUpdate.skills = oldSkills.concat(newSkills);
-
     projectUpdate.skills = Projects.findByIdAndUpdate(projectId, projectUpdate, { new: true }, (err, product) => {
       if (err) {
         console.log(err);
