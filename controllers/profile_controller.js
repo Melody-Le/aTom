@@ -1,6 +1,5 @@
 const Users = require("../models/users.js");
 const Projects = require("../models/projects.js");
-// const ProjectPhotos = require("../models/project_photo.js");
 const { CLIENT_RENEG_LIMIT } = require("tls");
 
 const controller = {

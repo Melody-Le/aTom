@@ -19,8 +19,8 @@ const controller = {
   //Method POST: to create new project
   async create(req, res) {
     const projectData = req.body;
-    const currentUser = await Users.findById(`${req.session?.currentUser?._id}`);
-    projectData.author_id = currentUser._id;
+    const profileOwner = await Users.findById(`${req.session?.currentUser?._id}`);
+    projectData.author_id = profileOwner._id;
     const newProject = await Projects.create(projectData);
     res.redirect(`/projects/${newProject._id}`);
   },
@@ -43,7 +43,6 @@ const controller = {
     const oldSkills = oldProject.skills;
     projectUpdate.photos = oldProjectPhotos.concat(newPhotos);
     projectUpdate.skills = oldSkills.concat(newSkills);
-
     projectUpdate.skills = Projects.findByIdAndUpdate(projectId, projectUpdate, { new: true }, (err, product) => {
       if (err) {
         console.log(err);
@@ -67,6 +66,16 @@ const controller = {
     project.skills.splice(skillIndex, 1);
     await project.save();
     res.redirect(`/projects/${project_id}/edit`);
+  },
+  async deleteProject(req, res) {
+    const projectId = req.params.project_id;
+    const profileOwnerId = req.session.currentUser._id;
+    try {
+      await Projects.findByIdAndRemove(projectId);
+      res.redirect(`/profiles/${profileOwnerId}`);
+    } catch (err) {
+      console.log(err);
+    }
   },
 };
 module.exports = controller;

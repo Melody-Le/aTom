@@ -73,6 +73,11 @@
                     <i class="fa-solid fa-file-pen p-2"></i>
                   </a>
                 </div>
+                <form action="/projects/<%= project._id %>/delete?_method=DELETE" method="POST">
+                  <button class="btn-delete">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </form>
               <% } %> 
               <div id="carousel-project-<%= project._id %>" class="carousel slide mt-3" data-ride="carousel" data-interval = "1000" data-pause="hover">
                 <div class="carousel-inner">
