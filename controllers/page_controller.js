@@ -12,7 +12,7 @@ const controller = {
   async showJobs(req, res) {
     try {
       const clients = await Users.where("isFreelancer").equals(false);
-      res.render("./pages/jobs.ejs", { clients });
+      res.render("./pages/job-market.ejs", { clients });
     } catch (error) {
       console.log(error.message);
     }
