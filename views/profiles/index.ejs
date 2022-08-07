@@ -27,9 +27,11 @@
               <i class="fa-solid fa-location-dot"></i>
               <%= profileOwner.city%>
             </p>
-            <div class="stars-outer">
-              <div class="stars-inner" style="width:80%"></div>
-            </div>
+            <% if (profileOwner.isFreelancer) { %>
+              <div class="stars-outer">
+                <div class="stars-inner" style="width:80%"></div>
+              </div>
+            <% } %>
             <a href="#">
               <i class="fa-solid fa-message"></i>
             </a>
@@ -37,15 +39,17 @@
               <i class="fa-solid fa-envelope"></i>
             </a>
           </div>
-          <div>
-            <a href="<%= profileOwner.linkedIn%>">LindedIn Link</a>
-            <h6>Skill</h6>
-            <ul class=" container list-inline px-0 mb-0">
-              <% profileOwner?.skills.forEach((skill) => { %>
-                <li class="list-inline-item mx-0 rounded"><%= skill%></li>
-              <% }) %>
-            </ul>
-          </div>
+          <% if (profileOwner.isFreelancer) { %>
+            <div>
+              <a href="<%= profileOwner.linkedIn%>">LindedIn Link</a>
+              <h6>Skill</h6>
+              <ul class=" container list-inline px-0 mb-0">
+                <% profileOwner?.skills.forEach((skill) => { %>
+                  <li class="list-inline-item mx-0 rounded"><%= skill%></li>
+                <% }) %>
+              </ul>
+            </div>
+          <% } %>
         </div>
       </div>
 
