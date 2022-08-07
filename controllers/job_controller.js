@@ -1,3 +1,4 @@
+const jobs = require("../models/jobs.js");
 const Jobs = require("../models/jobs.js");
 const Users = require("../models/users.js");
 
@@ -5,7 +6,7 @@ const controller = {
   async showJobPage(req, res) {
     try {
       const jobId = req.params.job_id;
-      const job = await Jobs.findById(jobId).populate("author_id");
+      const job = await Jobs.findByIdAndUpdate(jobId, { $pull: { photos: null, skills: null } }).populate("author_id");
       res.render("./jobs/index.ejs", { job });
     } catch (error) {
       console.log(error.message);
@@ -43,7 +44,7 @@ const controller = {
     const oldSkills = oldjob.skills;
     jobUpdate.photos = oldjobPhotos.concat(newPhotos);
     jobUpdate.skills = oldSkills.concat(newSkills);
-    jobUpdate.skills = Jobs.findByIdAndUpdate(jobId, jobUpdate, { new: true }, (err, product) => {
+    jobUpdate.skills = Jobs.findByIdAndUpdate(jobId, jobUpdate, (err, product) => {
       if (err) {
         console.log(err);
       }
@@ -55,16 +56,14 @@ const controller = {
   async deletePhoto(req, res) {
     const { job_id, photoIndex } = req.params;
     const job = await Jobs.findById(job_id);
-    job.photos.splice(photoIndex, 1);
-    await job.save();
+    await Jobs.findByIdAndUpdate(job_id, { $pull: { photos: job.photos[photoIndex] } });
     res.redirect(`/jobs/${job_id}/edit`);
   },
 
   async deleteSkill(req, res) {
     const { job_id, skillIndex } = req.params;
     const job = await Jobs.findById(job_id);
-    job.skills.splice(skillIndex, 1);
-    await job.save();
+    await Jobs.findByIdAndUpdate(job_id, { $pull: { skills: job.skills[skillIndex] } });
     res.redirect(`/jobs/${job_id}/edit`);
   },
   async deletejob(req, res) {
