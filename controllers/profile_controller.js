@@ -17,9 +17,10 @@ const controller = {
     }
   },
   //Method GET: to Show form for profile perofnal data
-  new(req, res) {
+  async new(req, res) {
     const profileOwnerId = req.params.user_id;
-    res.render("./profiles/profile_new.ejs", { profileOwnerId });
+    const profileOwner = await Users.findById(profileOwnerId);
+    res.render("./profiles/profile_new.ejs", { profileOwner });
   },
 
   //Method POST: to Post data from Personal information Form
