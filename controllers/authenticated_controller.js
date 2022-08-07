@@ -41,7 +41,8 @@ const controller = {
             res.send("unable to save session");
             return;
           }
-          res.redirect(`/profiles/new`);
+          const currentUserId = req.session.currentUser._id;
+          res.redirect(`/profiles/${currentUserId}/new`);
         });
       });
     } catch (error) {
@@ -66,9 +67,7 @@ const controller = {
         return res.render("authenticated/login.ejs", { error: errorMsg });
       }
       req.session.currentUser = foundUser;
-      // const currentUserID = req.session.currentUser._id;
-      // res.redirect(`/idea-market`);
-      res.redirect(`/profiles/${req.session.currentUser._id}`); //BUG: I can not re-rdirect to this page
+      res.redirect(`/profiles/${req.session.currentUser._id}`);
     } catch (err) {
       console.log(err.message);
       return;

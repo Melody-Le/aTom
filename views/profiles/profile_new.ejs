@@ -7,7 +7,7 @@
   <body>
     <%- include('../partials/navbar') %>
     <div class="container-fluid personal-data-form pt-3 mx-auto justify-content-center ">
-      <form action="/profiles/new" method="POST">
+      <form action="/profiles/<%=profileOwnerId%>/new" method="POST">
         <%- include('../partials/profile_form') %>
       </form>
     </div>
