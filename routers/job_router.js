@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const jobController = require("../controllers/job_controller.js");
 
-// router.get("/new", projectController.newProjectForm);
-// router.post("/new", projectController.create);
-// router.delete("/:project_id/:skillIndex/delete-skill", projectController.deleteSkill);
-// router.delete("/:project_id/:photoIndex/delete-photo", projectController.deletePhoto);
-// router.put("/:project_id", projectController.update);
-// router.get("/:project_id/edit", projectController.edit);
-// router.delete("/:project_id/delete", projectController.deleteProject);
+router.get("/new", jobController.new);
+router.post("/new", jobController.create);
+router.delete("/:job_id/:skillIndex/delete-skill", jobController.deleteSkill);
+router.delete("/:job_id/:photoIndex/delete-photo", jobController.deletePhoto);
+router.put("/:job_id", jobController.update);
+router.get("/:job_id/edit", jobController.edit);
+router.delete("/:job_id/delete", jobController.deletejob);
 router.get("/:job_id", jobController.showJobPage);
 
 module.exports = router;

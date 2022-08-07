@@ -34,9 +34,11 @@
           <div class="mt-3">
             <h6>Provided Skill</h6>
             <ul class="container list-inline px-0">
-              <% job.skills.forEach((skill) => { %>
-                <li class="list-inline-item mx-0 rounded"><%= skill %></li>
-              <% }) %>
+              <% if (job.skills.length) { %>
+                <% job.skills.forEach((skill) => { %>
+                  <li class="list-inline-item mx-0 rounded"><%= skill %></li>
+                <% }) %>
+              <% } %>
             </ul>
           </div>
         </div>

@@ -54,6 +54,7 @@
         <p class="about-me">
           <%= profileOwner.about_me%>
         </p>
+        <!-- NOTE: PROJECT  -->
         <div class="container-fluid mt-5">
           <div class="row">
             <% if (projects.length) { %>
@@ -116,7 +117,7 @@
           </div>
         </div>
         
-        <!-- NOTE: CLIENT JOBS:  -->
+        <!-- NOTE: CLIENT JOBS :  -->
         <div class="row">
               <h3 class="mr-auto">Post your Job what need freelancer join here: </h3>
             <% if (profileOwner._id == authenticatedUser._id) { %>
