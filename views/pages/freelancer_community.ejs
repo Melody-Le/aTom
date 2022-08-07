@@ -8,28 +8,30 @@
     <%- include('../partials/navbar') %>
     <div class="container mt-5 ">
       <div class="row row-cols-1 row-cols-md-3 g-3">
-        <% userList.forEach((user) => { %>
-          <div class="col">
-            <div class="card freelancer-card px-3">
-              <a href="/profiles/<%= user?._id%>">
-                <img src="<%= user.profile_photos_url %>" class="profile-image" alt="<%= user?.user_name%> profile photo">
-              </a>
-              <div class="card-body mt-5 p-0">
-                <h5 class="card-title"><%= user?.job_title %></h5>
-                <p class="card-text"><%= user?.about_me %></p>
-              </div>
-              <img src="<%= user?.cover_photos_url%>" class="card-img-top mt-2 cover-photo" alt="<%= user?.user_name%> cover photo">
-              <ul class=" container list-inline px-0 mb-0">
-                <% user?.skills.forEach((skill) => { %>
-                  <li class="list-inline-item mx-0 rounded"><%= skill%></li>
-                <% }) %>
-              </ul>
-              <div class="card-body">
-                <a href="#!" class="card-link">Message me</a>
-                <a href="mailto:<%= user?.email%>" class="card-link">Email me</a>
+        <% users.forEach((user) => { %>
+          <% if (user.isFreelancer) { %>
+            <div class="col">
+              <div class="card freelancer-card px-3">
+                <a href="/profiles/<%= user?._id%>">
+                  <img src="<%= user.profile_photos_url %>" class="profile-image" alt="<%= user?.user_name%> profile photo">
+                </a>
+                <div class="card-body mt-5 p-0">
+                  <h5 class="card-title"><%= user?.job_title %></h5>
+                  <p class="card-text"><%= user?.about_me %></p>
+                </div>
+                <img src="<%= user?.cover_photos_url%>" class="card-img-top mt-2 cover-photo" alt="<%= user?.user_name%> cover photo">
+                <ul class=" container list-inline px-0 mb-0">
+                  <% user?.skills.forEach((skill) => { %>
+                    <li class="list-inline-item mx-0 rounded"><%= skill%></li>
+                  <% }) %>
+                </ul>
+                <div class="card-body">
+                  <a href="#!" class="card-link">Message me</a>
+                  <a href="mailto:<%= user?.email%>" class="card-link">Email me</a>
+                </div>
               </div>
             </div>
-          </div>
+          <% } %>
         <% }) %>
       </div>
     </div>

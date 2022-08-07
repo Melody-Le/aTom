@@ -3,8 +3,16 @@ const Projects = require("../models/projects.js");
 const controller = {
   async showFreelancerCommunityPage(req, res) {
     try {
-      const userList = await Users.find({});
-      res.render("./pages/freelancer_community.ejs", { userList });
+      const users = await Users.find({});
+      res.render("./pages/freelancer_community.ejs", { users });
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  async showJobs(req, res) {
+    try {
+      const clients = await Users.where("isFreelancer").equals(false);
+      res.render("./pages/jobs.ejs", { clients });
     } catch (error) {
       console.log(error.message);
     }
