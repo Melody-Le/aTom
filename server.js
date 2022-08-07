@@ -9,6 +9,7 @@ const session = require("express-session");
 const { setUserVarMiddleware } = require("./middlewares/auth_middleware");
 const authenticatedRouter = require("./routers/authenticated_router");
 const projectRouter = require("./routers/project_router");
+const jobRouter = require("./routers/job_router");
 const profileRouter = require("./routers/profile_router");
 const pageRouter = require("./routers/page_router");
 
@@ -40,6 +41,7 @@ app.use("/authenticated", authenticatedRouter);
 // app.use("/idea-market", projectPhotoRouter);
 app.use("/", pageRouter);
 app.use("/projects", projectRouter);
+app.use("/jobs", jobRouter);
 app.use("/profiles", profileRouter);
 //TODO: remember to update the below code, navigate it to login page
 app.get("/", (req, res) => res.redirect("/authenticated/login"));

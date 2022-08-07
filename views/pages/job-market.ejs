@@ -16,10 +16,14 @@
         <% jobs.forEach((job) => { %>
           <div class="col">
             <div class="card freelancer-card px-3">
-              <a href="#!">
+              <a href="/profiles/<%= job.author_id._id %> ">
                 <img src="<%= job.author_id.profile_photos_url %>" class="profile-image" alt="<%= job.author_id.user_name %>">
               </a>
-              <div class="card-body mt-5 p-0">
+              <div class="card-body mt-5 mx-auto">
+                <a href="#!" class="card-link">Message me</a>
+                <a href="mailto:<%= job.author_id.email %> " class="card-link">Email me</a>
+              </div>
+              <div class="card-body mt-1 p-0">
                 <h5 class="card-title"><%= job.job_title %></h5>
                 <p class="card-text"><%= job.job_description %></p>
               </div>
@@ -55,9 +59,8 @@
                   <li class="list-inline-item mx-0 rounded"><%= skill%></li>
                 <% }) %>
               </ul>
-              <div class="card-body">
-                <a href="#!" class="card-link">Message me</a>
-                <a href="mailto:tanmui@gmail.com" class="card-link">Email me</a>
+              <div class="card-footer">
+                <a href="/jobs/<%= job._id %> " class="card-link">Read more</a>
               </div>
             </div>
           </div>
