@@ -60,7 +60,8 @@
         </p>
         <!-- NOTE: PROJECT  -->
         <div class="container-fluid mt-5">
-          <div class="row">
+          <hr class="my-3">
+          <div class="d-flex justify-content-between">
             <% if (projects.length) { %>
               <h3 class="mr-auto">My Completed project</h3>
             <% } %>
@@ -70,7 +71,7 @@
               </a>
             <% } %> 
           </div>
-          <div class="card-group row row-cols-1 row-cols-md-3 g-3">
+          <div class="card-group row row-cols-1 row-cols-md-3 g-3 mt-3">
             <% projects.forEach((project) => { %> 
               <div class="col">
                 <div class="card card-project">
@@ -122,8 +123,10 @@
         </div>
         
         <!-- NOTE: CLIENT JOBS :  -->
-        <div class="row">
-              <h3 class="mr-auto">Post your Job what need freelancer join here: </h3>
+        <div class="row mt-5">
+          <hr class="my-3">
+          <div class="d-flex justify-content-between mt-3">
+            <h3 class="mr-auto">Post your Job what need freelancer join here: </h3>
             <% if (profileOwner._id == authenticatedUser._id) { %>
               <a class="mx-1" href="/jobs/new">
                 <i class="fa-solid fa-file-circle-plus"></i>
@@ -179,7 +182,6 @@
               </div>
             <% }) %>
           </div>
-
         </div>
       </div>
     </div>
