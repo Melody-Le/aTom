@@ -1,5 +1,6 @@
 const Users = require("../models/users.js");
 const Projects = require("../models/projects.js");
+const Jobs = require("../models/jobs.js");
 const controller = {
   async showFreelancerCommunityPage(req, res) {
     try {
@@ -9,10 +10,12 @@ const controller = {
       console.log(error.message);
     }
   },
-  async showJobs(req, res) {
+  async showJobMarket(req, res) {
     try {
-      const clients = await Users.where("isFreelancer").equals(false);
-      res.render("./pages/job-market.ejs", { clients });
+      // const clients = await Users.where("isFreelancer").equals(false);
+      const jobs = await Jobs.find({}).populate("author_id");
+      // console.log(jobs);
+      res.render("./pages/job-market.ejs", { jobs });
     } catch (error) {
       console.log(error.message);
     }
