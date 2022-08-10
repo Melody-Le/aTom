@@ -33,12 +33,7 @@ app.use(
     cookie: { secure: false, httpOnly: false },
   })
 );
-<<<<<<< HEAD
-mongoose.set("returnOriginal", false);
-app.use(setUserVarMiddleware);
-=======
 app.use(setGlobalUserVariableMiddleware);
->>>>>>> main
 
 //=======ROUTER:
 
