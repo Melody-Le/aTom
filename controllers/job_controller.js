@@ -1,4 +1,3 @@
-const jobs = require("../models/jobs.js");
 const Jobs = require("../models/jobs.js");
 const Users = require("../models/users.js");
 
@@ -13,7 +12,7 @@ const controller = {
     }
   },
   //Method GET
-  new(req, res) {
+  newJobForm(req, res) {
     res.render("./jobs/job_new.ejs");
   },
 
@@ -66,7 +65,7 @@ const controller = {
     await Jobs.findByIdAndUpdate(job_id, { $pull: { skills: job.skills[skillIndex] } });
     res.redirect(`/jobs/${job_id}/edit`);
   },
-  async deletejob(req, res) {
+  async deleteJob(req, res) {
     const jobId = req.params.job_id;
     const profileOwnerId = req.session.currentUser._id;
     try {
