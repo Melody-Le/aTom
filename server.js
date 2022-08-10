@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 
 //NOTE: ROUTER:
+const { setGlobalUserVariableMiddleware } = require("./middlewares/auth_middleware");
 const authenticatedRouter = require("./routers/authenticated_router");
 const projectRouter = require("./routers/project_router");
 const profileRouter = require("./routers/profile_router");
@@ -31,6 +32,7 @@ app.use(
     cookie: { secure: false, httpOnly: false },
   })
 );
+app.use(setGlobalUserVariableMiddleware);
 
 //=======ROUTER:
 

@@ -8,9 +8,9 @@ const controller = {
     try {
       const userId = req.params.user_id;
       const profileOwner = await Users.findOne({ _id: userId });
-      const currentUser = req.session.currentUser;
+      const authenticatedUser = req.session.currentUser;
       const projects = await Projects.find({ author_id: userId });
-      res.render("./profiles/index.ejs", { profileOwner, projects, currentUser });
+      res.render("./profiles/index.ejs", { profileOwner, projects, authenticatedUser });
     } catch (error) {
       console.log(error);
       return;

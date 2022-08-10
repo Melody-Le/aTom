@@ -7,4 +7,8 @@ module.exports = {
     }
     res.redirect("/authenticated/login");
   },
+  setGlobalUserVariableMiddleware: (req, res, next) => {
+    res.locals.authUser = req?.session?.currentUser;
+    next();
+  },
 };

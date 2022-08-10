@@ -6,7 +6,7 @@ const controller = {
     try {
       const projectId = req.params.project_id;
       const project = await Projects.findById(projectId).populate("author_id");
-      res.render("./projects/index.ejs", { project, project });
+      res.render("./projects/index.ejs", { project });
     } catch (error) {
       console.log(error.message);
     }
