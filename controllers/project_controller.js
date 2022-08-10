@@ -17,7 +17,7 @@ const controller = {
   },
 
   //Method POST: to create new project
-  async create(req, res) {
+  async createProject(req, res) {
     const projectData = req.body;
     const profileOwner = await Users.findById(`${req.session?.currentUser?._id}`);
     projectData.author_id = profileOwner._id;
@@ -26,14 +26,14 @@ const controller = {
   },
 
   //Method GET: to Show form to edit profile:
-  async edit(req, res) {
+  async editProject(req, res) {
     const projectId = req.params.project_id;
     const project = await Projects.findById(projectId);
     res.render("./projects/project_edit.ejs", { project });
   },
 
   //Method PUT: to update project of specific ID
-  async update(req, res) {
+  async updateProject(req, res) {
     const projectId = req.params.project_id;
     const projectUpdate = req.body;
     const newPhotos = projectUpdate.photos;

@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const jobController = require("../controllers/job_controller.js");
+const { authenticatedOnly } = require("../middlewares/auth_middleware");
 
-// router.get("/new", projectController.newProjectForm);
-// router.post("/new", projectController.create);
-// router.delete("/:project_id/:skillIndex/delete-skill", projectController.deleteSkill);
-// router.delete("/:project_id/:photoIndex/delete-photo", projectController.deletePhoto);
-// router.put("/:project_id", projectController.update);
-// router.get("/:project_id/edit", projectController.edit);
-// router.delete("/:project_id/delete", projectController.deleteProject);
-router.get("/:job_id", jobController.showJobPage);
+router.get("/new", authenticatedOnly, jobController.newJobForm);
+router.post("/new", authenticatedOnly, jobController.createJob);
+router.delete("/:job_id/:skillIndex/delete-skill", authenticatedOnly, jobController.deleteSkill);
+router.delete("/:job_id/:photoIndex/delete-photo", authenticatedOnly, jobController.deletePhoto);
+router.put("/:job_id", authenticatedOnly, jobController.updateJob);
+router.get("/:job_id/edit", authenticatedOnly, jobController.editJob);
+router.delete("/:job_id/delete", authenticatedOnly, jobController.deleteJob);
+router.get("/:job_id", authenticatedOnly, jobController.showJobPage);
 
 module.exports = router;

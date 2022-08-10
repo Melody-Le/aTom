@@ -5,78 +5,75 @@ const controller = {
   async showJobPage(req, res) {
     try {
       const jobId = req.params.job_id;
-      const job = await Jobs.findById(jobId).populate("author_id");
+      const job = await Jobs.findByIdAndUpdate(jobId, { $pull: { photos: null, skills: null } }).populate("author_id");
       res.render("./jobs/index.ejs", { job });
     } catch (error) {
       console.log(error.message);
     }
   },
-  // //Method GET
-  // newProjectForm(req, res) {
-  //   res.render("./projects/project_new.ejs");
-  // },
+  //Method GET
+  newJobForm(req, res) {
+    res.render("./jobs/job_new.ejs");
+  },
 
-  // //Method POST: to create new project
-  // async create(req, res) {
-  //   const projectData = req.body;
-  //   const profileOwner = await Users.findById(`${req.session?.currentUser?._id}`);
-  //   projectData.author_id = profileOwner._id;
-  //   const newProject = await Projects.create(projectData);
-  //   res.redirect(`/projects/${newProject._id}`);
-  // },
+  //Method POST: to create new job
+  async createJob(req, res) {
+    const jobData = req.body;
+    const profileOwner = await Users.findById(`${req.session?.currentUser?._id}`);
+    jobData.author_id = profileOwner._id;
+    const newJob = await Jobs.create(jobData);
+    res.redirect(`/jobs/${newJob._id}`);
+  },
 
-  // //Method GET: to Show form to edit profile:
-  // async edit(req, res) {
-  //   const authenticatedUser = req.session.currentUser;
-  //   const projectId = req.params.project_id;
-  //   const project = await Projects.findById(projectId);
-  //   res.render("./projects/project_edit.ejs", { project });
-  // },
+  //Method GET: to Show form to edit Job:
+  async editJob(req, res) {
+    const jobId = req.params.job_id;
+    const job = await Jobs.findById(jobId);
+    res.render("./jobs/job_edit.ejs", { job });
+  },
 
-  // //Method PUT: to update project of specific ID
-  // async update(req, res) {
-  //   const projectId = req.params.project_id;
-  //   const projectUpdate = req.body;
-  //   const newPhotos = projectUpdate.photos;
-  //   const newSkills = projectUpdate.skills;
-  //   const oldProject = await Projects.findById(projectId);
-  //   const oldProjectPhotos = oldProject.photos;
-  //   const oldSkills = oldProject.skills;
-  //   projectUpdate.photos = oldProjectPhotos.concat(newPhotos);
-  //   projectUpdate.skills = oldSkills.concat(newSkills);
-  //   projectUpdate.skills = Projects.findByIdAndUpdate(projectId, projectUpdate, { new: true }, (err, product) => {
-  //     if (err) {
-  //       console.log(err);
-  //     }
-  //     res.redirect(`/projects/${projectId}`);
-  //   });
-  // },
+  //Method PUT: to update job of specific ID
+  async updateJob(req, res) {
+    const jobId = req.params.job_id;
+    const jobUpdate = req.body;
+    const newPhotos = jobUpdate.photos;
+    const newSkills = jobUpdate.skills;
+    const oldjob = await Jobs.findById(jobId);
+    const oldjobPhotos = oldjob.photos;
+    const oldSkills = oldjob.skills;
+    jobUpdate.photos = oldjobPhotos.concat(newPhotos);
+    jobUpdate.skills = oldSkills.concat(newSkills);
+    jobUpdate.skills = Jobs.findByIdAndUpdate(jobId, jobUpdate, (err, product) => {
+      if (err) {
+        console.log(err);
+      }
+      res.redirect(`/jobs/${jobId}`);
+    });
+  },
 
-  // //Method DELETE:  delete photo
-  // async deletePhoto(req, res) {
-  //   const { project_id, photoIndex } = req.params;
-  //   const project = await Projects.findById(project_id);
-  //   project.photos.splice(photoIndex, 1);
-  //   await project.save();
-  //   res.redirect(`/projects/${project_id}/edit`);
-  // },
+  //Method DELETE:  delete photo
+  async deletePhoto(req, res) {
+    const { job_id, photoIndex } = req.params;
+    const job = await Jobs.findById(job_id);
+    await Jobs.findByIdAndUpdate(job_id, { $pull: { photos: job.photos[photoIndex] } });
+    res.redirect(`/jobs/${job_id}/edit`);
+  },
 
-  // async deleteSkill(req, res) {
-  //   const { project_id, skillIndex } = req.params;
-  //   const project = await Projects.findById(project_id);
-  //   project.skills.splice(skillIndex, 1);
-  //   await project.save();
-  //   res.redirect(`/projects/${project_id}/edit`);
-  // },
-  // async deleteProject(req, res) {
-  //   const projectId = req.params.project_id;
-  //   const profileOwnerId = req.session.currentUser._id;
-  //   try {
-  //     await Projects.findByIdAndRemove(projectId);
-  //     res.redirect(`/profiles/${profileOwnerId}`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
+  async deleteSkill(req, res) {
+    const { job_id, skillIndex } = req.params;
+    const job = await Jobs.findById(job_id);
+    await Jobs.findByIdAndUpdate(job_id, { $pull: { skills: job.skills[skillIndex] } });
+    res.redirect(`/jobs/${job_id}/edit`);
+  },
+  async deleteJob(req, res) {
+    const jobId = req.params.job_id;
+    const profileOwnerId = req.session.currentUser._id;
+    try {
+      await Jobs.findByIdAndRemove(jobId);
+      res.redirect(`/profiles/${profileOwnerId}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
 module.exports = controller;

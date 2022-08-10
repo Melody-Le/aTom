@@ -8,44 +8,48 @@
     <%- include('../partials/navbar') %>
     <div class="container mt-5 ">
       <% if (profileOwner._id == authenticatedUser._id) { %>
-        <h2>Hi <%= profileOwner.user_name%></h2>
+        <h2>Hi <%= profileOwner.user_name %></h2>
       <% } %>  
       <div class="row">
-        <img class="user-profile-image img-fluid col-sm-2" src="<%= profileOwner.profile_photos_url%>" alt="<%= profileOwner.user_name%> profile photo">
+        <img class="user-profile-image img-fluid col-sm-2" src="<%= profileOwner.profile_photos_url %>" alt="<%= profileOwner.user_name %> profile photo">
         <div class="user-information-header col-sm-9">
           <div>
             <div class="d-flex">
-              <h2 class="mr-auto"><%= profileOwner.user_name%></h2>
+              <h2 class="mr-auto"><%= profileOwner.user_name %></h2>
               <% if (profileOwner._id == authenticatedUser._id) { %>
-                <a href="/profiles/<%= profileOwner._id%>/edit">
+                <a href="/profiles/<%= profileOwner._id %>/edit">
                   <i class="fa-solid fa-file-pen"></i>
                 </a>
               <% } %>  
             </div>
-            <h5><%= profileOwner.job_title%></h5>
+            <h5><%= profileOwner.job_title %></h5>
             <p>
               <i class="fa-solid fa-location-dot"></i>
-              <%= profileOwner.city%>
+              <%= profileOwner.city %>
             </p>
-            <div class="stars-outer">
-              <div class="stars-inner" style="width:80%"></div>
-            </div>
+            <% if (profileOwner.isFreelancer) { %>
+              <div class="stars-outer">
+                <div class="stars-inner" style="width:80%"></div>
+              </div>
+            <% } %>
             <a href="#">
               <i class="fa-solid fa-message"></i>
             </a>
-            <a href="mailto:<%= profileOwner.email%>">
+            <a href="mailto:<%= profileOwner.email %>">
               <i class="fa-solid fa-envelope"></i>
             </a>
           </div>
-          <div>
-            <a href="<%= profileOwner.linkedIn%>">LindedIn Link</a>
-            <h6>Skill</h6>
-            <ul class=" container list-inline px-0 mb-0">
-              <% profileOwner?.skills.forEach((skill) => { %>
-                <li class="list-inline-item mx-0 rounded"><%= skill%></li>
-              <% }) %>
-            </ul>
-          </div>
+          <% if (profileOwner.isFreelancer) { %>
+            <div>
+              <a href="<%= profileOwner.linkedIn %>">LinkedIn Link</a>
+              <h6>Skill</h6>
+              <ul class=" container list-inline px-0 mb-0">
+                <% profileOwner?.skills.forEach((skill) => { %>
+                  <li class="list-inline-item mx-0 rounded"><%= skill %></li>
+                <% }) %>
+              </ul>
+            </div>
+          <% } %>
         </div>
       </div>
 
@@ -54,18 +58,18 @@
         <p class="about-me">
           <%= profileOwner.about_me%>
         </p>
+        <!-- NOTE: PROJECT  -->
         <div class="container-fluid mt-5">
-          <div class="row">
-            <% if (projects.length) { %>
-              <h3 class="mr-auto">My Completed project</h3>
-            <% } %>
+          <hr class="my-3">
+          <div class="d-flex justify-content-between">
+            <h3 class="mr-auto">My Completed project</h3>
             <% if (profileOwner._id == authenticatedUser._id && profileOwner.isFreelancer) { %>
               <a class="mx-1" href="/projects/new">
                 <i class="fa-solid fa-file-circle-plus"></i>
               </a>
             <% } %> 
           </div>
-          <div class="card-group row row-cols-1 row-cols-md-3 g-3">
+          <div class="card-group row row-cols-1 row-cols-md-3 g-3 mt-3">
             <% projects.forEach((project) => { %> 
               <div class="col">
                 <div class="card card-project">
@@ -102,8 +106,8 @@
                     </a>
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title"><%= project.project_name%></h5>
-                    <p class="card-text project-description"><%= project.project_description%></p>
+                    <h5 class="card-title"><%= project.project_name %></h5>
+                    <p class="card-text project-description"><%= project.project_description %></p>
                   </div>
                   <div class="card-footer">
                     <a href="/projects/<%= project._id %> ">
@@ -116,9 +120,11 @@
           </div>
         </div>
         
-        <!-- NOTE: CLIENT JOBS:  -->
-        <div class="row">
-              <h3 class="mr-auto">Post your Job what need freelancer join here: </h3>
+        <!-- NOTE: CLIENT JOBS :  -->
+        <div class="row mt-5">
+          <hr class="my-3">
+          <div class="d-flex justify-content-between mt-3">
+            <h3 class="mr-auto">Post your Job what need freelancer join here: </h3>
             <% if (profileOwner._id == authenticatedUser._id) { %>
               <a class="mx-1" href="/jobs/new">
                 <i class="fa-solid fa-file-circle-plus"></i>
@@ -162,8 +168,8 @@
                     </a>
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title"><%= job.job_name%></h5>
-                    <p class="card-text job-description"><%= job.job_description%></p>
+                    <h5 class="card-title"><%= job.job_name %></h5>
+                    <p class="card-text job-description"><%= job.job_description %></p>
                   </div>
                   <div class="card-footer">
                     <a href="/jobs/<%= job._id %> ">
@@ -174,7 +180,6 @@
               </div>
             <% }) %>
           </div>
-
         </div>
       </div>
     </div>
