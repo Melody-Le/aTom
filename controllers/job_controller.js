@@ -17,7 +17,7 @@ const controller = {
   },
 
   //Method POST: to create new job
-  async create(req, res) {
+  async createJob(req, res) {
     const jobData = req.body;
     const profileOwner = await Users.findById(`${req.session?.currentUser?._id}`);
     jobData.author_id = profileOwner._id;
@@ -26,14 +26,14 @@ const controller = {
   },
 
   //Method GET: to Show form to edit Job:
-  async edit(req, res) {
+  async editJob(req, res) {
     const jobId = req.params.job_id;
     const job = await Jobs.findById(jobId);
     res.render("./jobs/job_edit.ejs", { job });
   },
 
   //Method PUT: to update job of specific ID
-  async update(req, res) {
+  async updateJob(req, res) {
     const jobId = req.params.job_id;
     const jobUpdate = req.body;
     const newPhotos = jobUpdate.photos;

@@ -8,19 +8,19 @@
     <%- include('../partials/navbar') %>
     <div class="container-fluid personal-data-form pt-3 mx-auto justify-content-center ">
       <form
-        action="/projects/<%=project._id%>?_method=PUT"
+        action="/projects/<%=project._id %>?_method=PUT"
         method="POST"
       >
         <div class="row mx-auto align-items-center h-100 text-left px-5 gx-4">
           <div class="card col-md-6 mb-4">
             <div class="card-body form-outline">
               <label class="form-label" for="project_name">project Name</label>
-              <input type="text" name="project_name" value="<%=project.project_name%>" class="form-control"/>
+              <input type="text" name="project_name" value="<%=project.project_name %>" class="form-control"/>
             </div>
 
             <div class="card-body form-outline">
               <label class="form-label" for="project_description">Project Description</label>
-              <input type="text" name="project_description" value="<%=project.project_description%>" class="form-control" placeholder="Project Description"/>
+              <input type="text" name="project_description" value="<%=project.project_description %>" class="form-control" placeholder="Project Description"/>
             </div>
 
             <div class="card-body form-outline input-skill-container">
