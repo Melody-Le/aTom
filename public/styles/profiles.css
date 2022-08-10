@@ -58,7 +58,7 @@ a {
 .card-project {
   position: relative;
 }
-.edit-project-icon {
+.btn-edit {
   border-radius: 50%;
   position: absolute;
   display: block;

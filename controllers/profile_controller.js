@@ -1,5 +1,6 @@
 const Users = require("../models/users.js");
 const Projects = require("../models/projects.js");
+const Jobs = require("../models/jobs.js");
 const { CLIENT_RENEG_LIMIT } = require("tls");
 
 const controller = {
@@ -10,16 +11,18 @@ const controller = {
       const profileOwner = await Users.findOne({ _id: userId });
       const authenticatedUser = req.session.currentUser;
       const projects = await Projects.find({ author_id: userId });
-      res.render("./profiles/index.ejs", { profileOwner, projects, authenticatedUser });
+      const jobs = await Jobs.find({ author_id: userId });
+      res.render("./profiles/index.ejs", { profileOwner, projects, authenticatedUser, jobs });
     } catch (error) {
       console.log(error);
       return;
     }
   },
   //Method GET: to Show form for profile perofnal data
-  new(req, res) {
+  async new(req, res) {
     const profileOwnerId = req.params.user_id;
-    res.render("./profiles/profile_new.ejs", { profileOwnerId });
+    const profileOwner = await Users.findById(profileOwnerId);
+    res.render("./profiles/profile_new.ejs", { profileOwner });
   },
 
   //Method POST: to Post data from Personal information Form
