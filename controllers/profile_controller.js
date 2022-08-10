@@ -2,6 +2,15 @@ const Users = require("../models/users.js");
 const Projects = require("../models/projects.js");
 const Jobs = require("../models/jobs.js");
 const { CLIENT_RENEG_LIMIT } = require("tls");
+const multer = require("multer");
+const upload = multer();
+const ImageKit = require("imagekit");
+
+const imageKit = new ImageKit({
+  publicKey: "public_5JloxLGz+odY9AEkpTU5uIOjgzs=",
+  privateKey: "private_1e1fJgBaoYs2zE4MAY1JXcuyDYM=",
+  urlEndpoint: "https://ik.imagekit.io/omjgl1fsu8",
+});
 
 const controller = {
   //Method GET: to Show userProfile
@@ -26,14 +35,31 @@ const controller = {
   },
 
   //Method POST: to Post data from Personal information Form
-  async create(req, res) {
-    const personalData = req.body;
-    const profileOwnerId = req.params.user_id;
-    const profileOwner = await Users.findById(profileOwnerId);
-    await profileOwner.updateOne({ personalData });
-    res.redirect(`/profiles/${profileOwner._id}`);
+  async createProfile(req, res) {
+    const file = req.file;
+    if (req.file) {
+      imageKit.upload(
+        {
+          file: req.file.buffer,
+          fileName: req.file.originalname,
+          folder: "user_avatars",
+        },
+        async function (error, response) {
+          if (error) {
+            console.log(error);
+          } else {
+            const personalData = req.body;
+            personalData.profile_photos_url = response.url;
+            const profileOwnerId = req.params.user_id;
+            const profileOwner = await Users.findById(profileOwnerId);
+            await profileOwner.updateOne({ personalData });
+            res.redirect(`/profiles/${profileOwner._id}`);
+          }
+        }
+      );
+    }
   },
-
+  // const result = await cloudinaryServices.uploadImage(req,res)
   //Method GET: to Show form to edit profile:
   async editProfile(req, res) {
     const profileOwner = await Users.findById(req.params.user_id);

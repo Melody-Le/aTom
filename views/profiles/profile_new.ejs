@@ -7,13 +7,17 @@
   <body>
     <%- include('../partials/navbar') %>
     <div class="container-fluid personal-data-form pt-3 mx-auto justify-content-center ">
-      <form action="/profiles/<%= profileOwner._id %>/new" method="POST">
+      <form action="/profiles/<%= profileOwner._id %>/new" method="POST" enctype="multipart/form-data">
         <div class="row mx-auto align-items-center h-100 text-left px-5 gx-4">
           <div class="card col-md-6 mb-4">
             <div class="card-body form-outline">
               <input type="text" name="profile_photos_url" id="profile_photos_url" class="form-control" placeholder="your profile image"/>
               <label class="form-label" for="profile_photos_url">Profile Photo URL or Upload a Photo</label>
+              <!-- NOTE: UPLOAD IMAGE :  -->
               <i class="fa-solid fa-camera"></i>
+              <div class="input-group">
+                <input id="files" name="file" class="files" type="file" />
+              </div>
             </div>
             <div class="card-body form-outline">
               <input type="text" name="cover_photos_url" id="cover_photos_url" class="form-control" placeholder="choose the photo that show your interest field"/>
