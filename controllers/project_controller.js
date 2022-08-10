@@ -27,7 +27,6 @@ const controller = {
 
   //Method GET: to Show form to edit profile:
   async edit(req, res) {
-    const authenticatedUser = req.session.currentUser;
     const projectId = req.params.project_id;
     const project = await Projects.findById(projectId);
     res.render("./projects/project_edit.ejs", { project });
