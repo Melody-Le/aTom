@@ -15,44 +15,40 @@
     <div class="offcanvas-md offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <ul class="navbar-nav">
         <% if (authUser) { %>
-        <li class="nav-item my-auto">
-          <a class="nav-link active" href="/freelancer-community" id="freelancer-community-page">Freelancer Comunity</a>
-        </li>
-        <li class="nav-item my-auto">
-          <a class="nav-link active" href="/job-market" id="freelancer-community-page">Jobs</a>
-        </li>
-        <li class="nav-item my-auto">
-          <a class="nav-link active" href="/idea-market" id="idea-market-page">Idea Market</a>
-        </li>
-        <li class="nav-item my-auto">
-          <form method="POST" action="/authenticated/logout" class="nav-link mb-0">
-            <button type="submit" class="border-0 bg-light">Logout</button>
-          </form>
-        </li>
-        <li class="nav-item my-auto">
-          <!-- TODO: DO LATER-->
-          <form method="POST" action="/authenticated/logout" class="nav-link mb-0">
-            <button type="submit" class="border-0 bg-light">Delete Account</button>
-          </form>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/profiles/<%= authUser._id %> " id="profile-page">
-            <img
-              class="rounded-circle"
-              src="<%= authUser.profile_photos_url%>"
-              alt="<%= authUser.user_name%> profile photo"
-              style="height: 3rem; width: 3rem; object-fit: cover;"
-            />
-          </a>
-        </li>
+          <li class="nav-item my-auto">
+            <a class="nav-link active" href="/freelancer-community" id="freelancer-community-page">Freelancer Comunity</a>
+          </li>
+          <li class="nav-item my-auto">
+            <a class="nav-link active" href="/idea-market" id="idea-market-page">Idea Market</a>
+          </li>
+          <li class="nav-item my-auto">
+            <form method="POST" action="/authenticated/logout" class="nav-link">
+              <button type="submit" class="border-0">Logout</button>
+            </form>
+          </li>
+          <li class="nav-item my-auto">
+            <!-- TODO: DO LATER-->
+            <form method="POST" action="/authenticated/logout" class="nav-link">
+              <button type="submit" class="border-0">Delete Account</button>
+            </form>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/profiles/<%= authUser._id %> " id="profile-page">
+              <img
+                class="rounded-circle"
+                src="<%= authUser.profile_photos_url%>"
+                alt="<%= authUser.user_name%> profile photo"
+                style="height: 3rem; width: 3rem; object-fit: cover;"
+              />
+            </a>
+          </li>
         <% } else { %>
-
-        <li class="nav-item my-auto">
-          <a class="nav-link active" href="/authenticated/login" id="login">Login</a>
-        </li>
-        <li class="nav-item my-auto">
-          <a class="nav-link active" href="/authenticated/register" id="register">Register</a>
-        </li>
+          <li class="nav-item my-auto">
+            <a class="nav-link active" href="/authenticated/login" id="login">Login</a>
+          </li>
+          <li class="nav-item my-auto">
+            <a class="nav-link active" href="/authenticated/register" id="register">Register</a>
+          </li>
         <% } %>
       </ul>
     </div>
