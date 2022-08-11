@@ -36,28 +36,32 @@ const controller = {
 
   //Method POST: to Post data from Personal information Form
   async createProfile(req, res) {
-    const file = req.file;
-    if (req.file) {
-      imageKit.upload(
-        {
-          file: req.file.buffer,
-          fileName: req.file.originalname,
-          folder: "user_avatars",
-        },
-        async function (error, response) {
-          if (error) {
-            console.log(error);
-          } else {
-            const personalData = req.body;
-            personalData.profile_photos_url = response.url;
-            const profileOwnerId = req.params.user_id;
-            const profileOwner = await Users.findById(profileOwnerId);
-            await profileOwner.updateOne({ personalData });
-            res.redirect(`/profiles/${profileOwner._id}`);
-          }
-        }
-      );
+    console.log(req.session.currentUser);
+    const photoUrl = {};
+    if (req.files) {
+      const photoObj = req.files;
+      for (let field in req.files) {
+        const result = await imageKit.upload({
+          file: photoObj[field][0].buffer,
+          fileName: photoObj[field][0].originalname,
+          folder: field,
+        });
+        photoUrl[field] = result.url;
+      }
     }
+    // console.log(photoUrl);
+    const personalData = req.body;
+
+    // personalData.profile_photos_url =
+    //   photoUrl.profile_photos_url ||
+    //   req.body.profile_photos_url ||
+    //   "https://images.pexels.com/photos/4321526/pexels-photo-4321526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+    // personalData.cover_photos_url =
+    //   photoUrl.cover_photos_url ||
+    //   req.body.profile_photos_url ||
+    //   "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
+    Users.findByIdAndUpdate(req.params.user_id, req.body, { new: true });
+    res.redirect(`/profiles/${req.params.user_id}`);
   },
   // const result = await cloudinaryServices.uploadImage(req,res)
   //Method GET: to Show form to edit profile:
