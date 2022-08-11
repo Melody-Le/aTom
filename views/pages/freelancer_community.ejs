@@ -12,10 +12,11 @@
           <% if (user.isFreelancer) { %>
             <div class="col">
               <div class="card freelancer-card px-3">
-                <a href="/profiles/<%= user?._id%>">
+                <a href="/profiles/<%= user?._id%>" class="profile-head">
                   <img src="<%= user.profile_photos_url %>" class="profile-image" alt="<%= user?.user_name%> profile photo">
+                  <h5 class="mx-auto text-capitalize py-3"><%= user?.user_name %></h5>
                 </a>
-                <div class="card-body mt-5 p-0">
+                <div class="card-body contact-box p-0">
                   <h5 class="card-title"><%= user?.job_title %></h5>
                   <p class="card-text"><%= user?.about_me %></p>
                 </div>

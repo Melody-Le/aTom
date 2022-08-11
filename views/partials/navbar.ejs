@@ -36,13 +36,14 @@
             </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/profiles/<%= authUser.user_id %> " id="profile-page">
+            <a class="nav-link active" href="/profiles/<%= authUser._id %> " id="profile-page">
               <img
                 class="rounded-circle"
-                src="<%= authUser.profile_photos_url%>"
-                alt="<%= authUser.user_name%> profile photo"
+                src="<%= authUser.profile_photos_url %>"
+                alt="<%= authUser.user_name %> profile photo"
                 style="height: 3rem; width: 3rem; object-fit: cover;"
               />
+              <p>Hi <%= authUser.user_name %></p>
             </a>
           </li>
         <% } else { %>

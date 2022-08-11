@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const Users = require("../models/users.js");
+const Jobs = require("../models/jobs.js");
 const Projects = require("../models/projects.js");
 
 const controller = {
@@ -96,9 +97,10 @@ const controller = {
   },
   async deleteAccount(req, res) {
     const userId = req.params.user_id;
-    console.log(userId);
     await Projects.findOneAndDelete({ author_id: userId });
+    await Jobs.findOneAndDelete({ author_id: userId });
     await Users.findByIdAndDelete(userId);
+    res.redirect("/authenticated/login");
   },
 };
 module.exports = controller;

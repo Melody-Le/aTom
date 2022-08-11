@@ -1,9 +1,26 @@
+a {
+  text-decoration: none;
+  color: black;
+}
 .freelancer-card {
   position: relative;
   margin-top: 8rem;
   border-radius: 1rem;
 }
-.profile-image {
+.profile-head {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* width: 10rem; */
+  /* height: 10rem; */
+  top: -6rem;
+  left: 25%;
+}
+.contact-box {
+  margin-top: 7rem;
+}
+/* .profile-image {
   position: absolute;
   width: 10rem;
   height: 10rem;
@@ -11,7 +28,18 @@
   border-radius: 100%;
   top: -7rem;
   left: 25%;
+} */
+
+.profile-image {
+  /* position: absolute; */
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 100%;
+  /* top: -7rem; */
+  /* left: 25%; */
 }
+
 .profile-image:hover {
   transform-style: preserve-3d;
   transition: all 0.3s ease-in;

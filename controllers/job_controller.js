@@ -5,7 +5,7 @@ const controller = {
   async showJobPage(req, res) {
     try {
       const jobId = req.params.job_id;
-      const job = await Jobs.findByIdAndUpdate(jobId, { $pull: { photos: null, skills: null } }).populate("author_id");
+      const job = await Jobs.findById(jobId).populate("author_id");
       const profileOwnerId = job.author_id;
       const profileOwner = await Users.findOne({ _id: profileOwnerId });
       const authenticatedUser = req.session.currentUser;
@@ -42,12 +42,12 @@ const controller = {
     const jobUpdate = req.body;
     const newPhotos = jobUpdate.photos;
     const newSkills = jobUpdate.skills;
-    const oldjob = await Jobs.findById(jobId);
-    const oldjobPhotos = oldjob.photos;
-    const oldSkills = oldjob.skills;
-    jobUpdate.photos = oldjobPhotos.concat(newPhotos);
-    jobUpdate.skills = oldSkills.concat(newSkills);
-    jobUpdate.skills = Jobs.findByIdAndUpdate(jobId, jobUpdate, (err) => {
+    const oldJob = await Jobs.findById(jobId);
+    const oldJobPhotos = oldJob.photos;
+    const oldSkills = oldJob.skills;
+    jobUpdate.photos = oldJobPhotos.concat(newPhotos).filter((photo) => !!photo);
+    jobUpdate.skills = oldSkills.concat(newSkills).filter((skill) => !!skill);
+    Jobs.findByIdAndUpdate(jobId, jobUpdate, (err) => {
       if (err) {
         console.log(err);
       }
