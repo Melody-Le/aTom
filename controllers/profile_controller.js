@@ -35,6 +35,7 @@ const controller = {
   //Method POST: to Post data from Personal information Form
   async createProfile(req, res) {
     const photoUrl = {};
+    // console.log(req.files);
     if (req.files) {
       const photoObj = req.files;
       for (let field in req.files) {
@@ -47,7 +48,7 @@ const controller = {
       }
     }
     const personalData = req.body;
-    console.log(req.body);
+    // console.log(req.body);
 
     personalData.profile_photos_url =
       photoUrl.profile_photos_url ||
@@ -73,18 +74,31 @@ const controller = {
 
   //Method PUT: to update profile of specific ID
   async updateProfile(req, res) {
-    console.log(req.body);
+    // console.log(req.body);
+    console.log(req.files);
     const photoUrl = {};
+    if (req.files) {
+      const photoObj = req.files;
+      for (let field in req.files) {
+        const result = await imageKit.upload({
+          file: photoObj[field][0].buffer,
+          fileName: photoObj[field][0].originalname,
+          folder: field,
+        });
+        photoUrl[field] = result.url;
+      }
+    }
+    console.log(req.body);
     const personalData = req.body;
-    // personalData.profile_photos_url =
-    //   photoUrl.profile_photos_url ||
-    //   req.body.profile_photos_url ||
-    //   "https://images.pexels.com/photos/4321526/pexels-photo-4321526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
-    // personalData.cover_photos_url =
-    //   photoUrl.cover_photos_url ||
-    //   req.body.profile_photos_url ||
-    //   "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
-    Users.findByIdAndUpdate(req.params.user_id, req.body, { new: true }, (err, product) => {
+    personalData.profile_photos_url =
+      photoUrl.upload_profile_photos_url ||
+      req.body.profile_photos_url ||
+      "https://images.pexels.com/photos/4321526/pexels-photo-4321526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+    personalData.cover_photos_url =
+      photoUrl.upload_cover_photos_url ||
+      req.body.profile_photos_url ||
+      "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
+    Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err, product) => {
       if (err) {
         console.log(err);
       }
