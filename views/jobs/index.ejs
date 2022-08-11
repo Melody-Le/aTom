@@ -11,9 +11,11 @@
         <div class="job-title row">
           <div class="d-flex">
             <h2 class="mr-auto"><%= job.job_title %></h2>
-            <a href="/jobs/<%= job._id %>/edit">
-              <i class="fa-solid fa-file-pen"></i>
-            </a>
+            <% if (profileOwner._id == authenticatedUser._id) { %>
+              <a href="/jobs/<%= job._id %>/edit">
+                <i class="fa-solid fa-file-pen"></i>
+              </a>
+            <% } %> 
           </div>
           <figure class="user-profile-box mb-0">
             <a href="/profiles/<%= job.author_id._id %>">

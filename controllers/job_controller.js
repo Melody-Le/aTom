@@ -6,7 +6,10 @@ const controller = {
     try {
       const jobId = req.params.job_id;
       const job = await Jobs.findByIdAndUpdate(jobId, { $pull: { photos: null, skills: null } }).populate("author_id");
-      res.render("./jobs/index.ejs", { job });
+      const profileOwnerId = job.author_id;
+      const profileOwner = await Users.findOne({ _id: profileOwnerId });
+      const authenticatedUser = req.session.currentUser;
+      res.render("./jobs/index.ejs", { job, profileOwner, authenticatedUser });
     } catch (error) {
       console.log(error.message);
     }

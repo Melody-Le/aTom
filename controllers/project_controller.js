@@ -6,7 +6,10 @@ const controller = {
     try {
       const projectId = req.params.project_id;
       const project = await Projects.findById(projectId).populate("author_id");
-      res.render("./projects/index.ejs", { project });
+      const profileOwnerId = project.author_id;
+      const profileOwner = await Users.findOne({ _id: profileOwnerId });
+      const authenticatedUser = req.session.currentUser;
+      res.render("./projects/index.ejs", { project, profileOwner, authenticatedUser });
     } catch (error) {
       console.log(error.message);
     }
