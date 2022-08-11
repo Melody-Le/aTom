@@ -14,7 +14,7 @@ const profileRouter = require("./routers/profile_router");
 const pageRouter = require("./routers/page_router");
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 const connStr = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@generalassembly.17sk9.mongodb.net/?retryWrites=true&w=majority`;
 

@@ -24,6 +24,10 @@
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0"
   },
+  "engines": {
+    "node": "18.x",
+    "npm": "8.x"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
