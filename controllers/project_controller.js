@@ -58,8 +58,9 @@ const controller = {
   async deletePhoto(req, res) {
     const { project_id, photoIndex } = req.params;
     const project = await Projects.findById(project_id);
-    project.photos.splice(photoIndex, 1);
-    await project.save();
+    // project.photos.splice(photoIndex, 1);
+    // await project.save();
+    await Projects.findByIdAndUpdate(project_id, { $pull: { photos: project.photos[photoIndex] } });
     res.redirect(`/projects/${project_id}/edit`);
   },
 
