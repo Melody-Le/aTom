@@ -42,7 +42,6 @@ const controller = {
             return;
           }
           const currentUserId = req.session.currentUser._id;
-          console.log(req.session.currentUser);
           res.redirect(`/profiles/${currentUserId}/new`);
         });
       });

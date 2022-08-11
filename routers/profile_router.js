@@ -15,8 +15,15 @@ router.post(
   ]),
   profileController.createProfile
 );
-router.put("/:user_id", authenticatedOnly, profileController.updateProfile);
-router.get("/:user_id/edit", authenticatedOnly, profileController.editProfile);
-router.get("/:user_id", authenticatedOnly, profileController.showProfilePage);
+router.put(
+  "/:user_id",
+  upload.fields([
+    { name: "profile_photos_url", maxCount: 1 },
+    { name: "cover_photos_url", maxCount: 1 },
+  ]),
+  profileController.updateProfile
+);
+router.get("/:user_id/edit", profileController.editProfile);
+router.get("/:user_id", profileController.showProfilePage);
 
 module.exports = router;

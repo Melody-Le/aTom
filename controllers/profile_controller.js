@@ -2,8 +2,6 @@ const Users = require("../models/users.js");
 const Projects = require("../models/projects.js");
 const Jobs = require("../models/jobs.js");
 const { CLIENT_RENEG_LIMIT } = require("tls");
-const multer = require("multer");
-const upload = multer();
 const ImageKit = require("imagekit");
 
 const imageKit = new ImageKit({
@@ -36,7 +34,6 @@ const controller = {
 
   //Method POST: to Post data from Personal information Form
   async createProfile(req, res) {
-    console.log(req.session.currentUser);
     const photoUrl = {};
     if (req.files) {
       const photoObj = req.files;
@@ -49,9 +46,36 @@ const controller = {
         photoUrl[field] = result.url;
       }
     }
-    // console.log(photoUrl);
     const personalData = req.body;
+    console.log(req.body);
 
+    personalData.profile_photos_url =
+      photoUrl.profile_photos_url ||
+      req.body.profile_photos_url ||
+      "https://images.pexels.com/photos/4321526/pexels-photo-4321526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+    personalData.cover_photos_url =
+      photoUrl.cover_photos_url ||
+      req.body.profile_photos_url ||
+      "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
+
+    Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err) => {
+      if (err) {
+        console.log(err);
+      }
+      res.redirect(`/profiles/${req.params.user_id}`);
+    });
+  },
+  //Method GET: to Show form to edit ppersonalDatarofile:
+  async editProfile(req, res) {
+    const profileOwner = await Users.findById(req.params.user_id);
+    res.render("./profiles/profile_edit.ejs", { profileOwner });
+  },
+
+  //Method PUT: to update profile of specific ID
+  async updateProfile(req, res) {
+    console.log(req.body);
+    const photoUrl = {};
+    const personalData = req.body;
     // personalData.profile_photos_url =
     //   photoUrl.profile_photos_url ||
     //   req.body.profile_photos_url ||
@@ -60,18 +84,6 @@ const controller = {
     //   photoUrl.cover_photos_url ||
     //   req.body.profile_photos_url ||
     //   "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
-    Users.findByIdAndUpdate(req.params.user_id, req.body, { new: true });
-    res.redirect(`/profiles/${req.params.user_id}`);
-  },
-  // const result = await cloudinaryServices.uploadImage(req,res)
-  //Method GET: to Show form to edit profile:
-  async editProfile(req, res) {
-    const profileOwner = await Users.findById(req.params.user_id);
-    res.render("./profiles/profile_edit.ejs", { profileOwner });
-  },
-
-  //Method PUT: to update profile of specific ID
-  async updateProfile(req, res) {
     Users.findByIdAndUpdate(req.params.user_id, req.body, { new: true }, (err, product) => {
       if (err) {
         console.log(err);
