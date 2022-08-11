@@ -48,15 +48,13 @@ const controller = {
       }
     }
     const personalData = req.body;
-    // console.log(req.body);
-
     personalData.profile_photos_url =
       photoUrl.profile_photos_url ||
       req.body.profile_photos_url ||
       "https://images.pexels.com/photos/4321526/pexels-photo-4321526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
     personalData.cover_photos_url =
       photoUrl.cover_photos_url ||
-      req.body.profile_photos_url ||
+      req.body.cover_photos_url ||
       "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
     // run the code below to update image into Locals User Variable
     res.locals.authUser.profile_photos_url = personalData.profile_photos_url;
@@ -75,7 +73,6 @@ const controller = {
 
   //Method PUT: to update profile of specific ID
   async updateProfile(req, res) {
-    // console.log("req.files is: ", req.files);
     const photoUrl = {};
     if (req.files) {
       const photoObj = req.files;
@@ -95,7 +92,7 @@ const controller = {
       "https://images.pexels.com/photos/4321526/pexels-photo-4321526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
     personalData.cover_photos_url =
       photoUrl.upload_cover_photos_url ||
-      req.body.profile_photos_url ||
+      req.body.cover_photos_url ||
       "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
     Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err) => {
       if (err) {
