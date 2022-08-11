@@ -11,6 +11,7 @@ const controller = {
       console.log(error.message);
     }
   },
+
   //Method GET
   newJobForm(req, res) {
     res.render("./jobs/job_new.ejs");
@@ -43,7 +44,7 @@ const controller = {
     const oldSkills = oldjob.skills;
     jobUpdate.photos = oldjobPhotos.concat(newPhotos);
     jobUpdate.skills = oldSkills.concat(newSkills);
-    jobUpdate.skills = Jobs.findByIdAndUpdate(jobId, jobUpdate, (err, product) => {
+    jobUpdate.skills = Jobs.findByIdAndUpdate(jobId, jobUpdate, (err) => {
       if (err) {
         console.log(err);
       }

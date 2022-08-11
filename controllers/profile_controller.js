@@ -74,8 +74,7 @@ const controller = {
 
   //Method PUT: to update profile of specific ID
   async updateProfile(req, res) {
-    // console.log(req.body);
-    console.log(req.files);
+    // console.log("req.files is: ", req.files);
     const photoUrl = {};
     if (req.files) {
       const photoObj = req.files;
@@ -88,7 +87,6 @@ const controller = {
         photoUrl[field] = result.url;
       }
     }
-    console.log(req.body);
     const personalData = req.body;
     personalData.profile_photos_url =
       photoUrl.upload_profile_photos_url ||
@@ -98,7 +96,7 @@ const controller = {
       photoUrl.upload_cover_photos_url ||
       req.body.profile_photos_url ||
       "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
-    Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err, product) => {
+    Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err) => {
       if (err) {
         console.log(err);
       }
