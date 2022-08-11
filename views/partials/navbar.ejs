@@ -31,12 +31,12 @@
           </li>
           <li class="nav-item my-auto">
             <!-- TODO: DO LATER-->
-            <form method="POST" action="/authenticated/logout" class="nav-link my-0">
+            <form method="POST" action="/authenticated/<%= authUser._id%>/delete?_method=DELETE" class="nav-link my-0">
               <button type="submit" class="border-0 bg-light">Delete Account</button>
             </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/profiles/<%= authUser._id %> " id="profile-page">
+            <a class="nav-link active" href="/profiles/<%= authUser.user_id %> " id="profile-page">
               <img
                 class="rounded-circle"
                 src="<%= authUser.profile_photos_url%>"

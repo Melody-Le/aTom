@@ -9,5 +9,6 @@ router.get("/register", authenticatedController.showRegistrationForm);
 router.post("/register", authenticatedController.newRegister);
 
 router.post("/logout", authenticatedController.logout);
+router.delete("/:user_id/delete", authenticatedController.deleteAccount);
 
 module.exports = router;

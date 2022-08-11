@@ -32,7 +32,6 @@ const controller = {
   async editProject(req, res) {
     const projectId = req.params.project_id;
     const project = await Projects.findById(projectId);
-    console.log("=========> project: ", project);
     res.render("./projects/project_edit.ejs", { project });
   },
 
@@ -40,16 +39,13 @@ const controller = {
   async updateProject(req, res) {
     const projectId = req.params.project_id;
     const projectUpdate = req.body;
-    console.log("=========> projectUpdate: ", projectUpdate);
     const newPhotos = projectUpdate.photos;
     const newSkills = projectUpdate.skills;
     const oldProject = await Projects.findById(projectId);
-    console.log("=========> oldProject: ", oldProject);
     const oldProjectPhotos = oldProject.photos;
     const oldSkills = oldProject.skills;
     projectUpdate.photos = oldProjectPhotos.concat(newPhotos).filter((photo) => !!photo);
     projectUpdate.skills = oldSkills.concat(newSkills);
-    console.log("=========> projectUpdate:/xxx ", projectUpdate);
     Projects.findByIdAndUpdate(projectId, projectUpdate, { new: true }, (err) => {
       if (err) {
         console.log(err);

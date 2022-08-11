@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const Users = require("../models/users.js");
+const Projects = require("../models/projects.js");
 
 const controller = {
   async showRegistrationForm(req, res) {
@@ -92,6 +93,12 @@ const controller = {
         res.redirect("/");
       });
     });
+  },
+  async deleteAccount(req, res) {
+    const userId = req.params.user_id;
+    console.log(userId);
+    await Projects.findOneAndDelete({ author_id: userId });
+    await Users.findByIdAndDelete(userId);
   },
 };
 module.exports = controller;
