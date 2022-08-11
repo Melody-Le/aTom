@@ -58,7 +58,7 @@ const controller = {
       photoUrl.cover_photos_url ||
       req.body.profile_photos_url ||
       "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
-
+    res.locals.authUser.profile_photos_url = personalData.profile_photos_url;
     Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err) => {
       if (err) {
         console.log(err);

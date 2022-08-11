@@ -9,6 +9,9 @@ module.exports = {
   },
   setGlobalUserVariableMiddleware: (req, res, next) => {
     res.locals.authUser = req?.session?.currentUser;
+    console.log("currentUser in middleware: ", req?.session?.currentUser);
+    console.log("authUser in middleware: ", res?.locals?.authUser);
+    console.log("authUser Photo in middleware: ", res?.locals?.authUser?.profile_photos_url);
     next();
   },
 };
