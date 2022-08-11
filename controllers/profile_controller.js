@@ -2,6 +2,13 @@ const Users = require("../models/users.js");
 const Projects = require("../models/projects.js");
 const Jobs = require("../models/jobs.js");
 const { CLIENT_RENEG_LIMIT } = require("tls");
+const ImageKit = require("imagekit");
+
+const imageKit = new ImageKit({
+  publicKey: "public_5JloxLGz+odY9AEkpTU5uIOjgzs=",
+  privateKey: "private_1e1fJgBaoYs2zE4MAY1JXcuyDYM=",
+  urlEndpoint: "https://ik.imagekit.io/omjgl1fsu8",
+});
 
 const controller = {
   //Method GET: to Show userProfile
@@ -26,15 +33,40 @@ const controller = {
   },
 
   //Method POST: to Post data from Personal information Form
-  async create(req, res) {
+  async createProfile(req, res) {
+    const photoUrl = {};
+    // console.log(req.files);
+    if (req.files) {
+      const photoObj = req.files;
+      for (let field in req.files) {
+        const result = await imageKit.upload({
+          file: photoObj[field][0].buffer,
+          fileName: photoObj[field][0].originalname,
+          folder: field,
+        });
+        photoUrl[field] = result.url;
+      }
+    }
     const personalData = req.body;
-    const profileOwnerId = req.params.user_id;
-    const profileOwner = await Users.findById(profileOwnerId);
-    await profileOwner.updateOne({ personalData });
-    res.redirect(`/profiles/${profileOwner._id}`);
-  },
+    // console.log(req.body);
 
-  //Method GET: to Show form to edit profile:
+    personalData.profile_photos_url =
+      photoUrl.profile_photos_url ||
+      req.body.profile_photos_url ||
+      "https://images.pexels.com/photos/4321526/pexels-photo-4321526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+    personalData.cover_photos_url =
+      photoUrl.cover_photos_url ||
+      req.body.profile_photos_url ||
+      "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
+
+    Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err) => {
+      if (err) {
+        console.log(err);
+      }
+      res.redirect(`/profiles/${req.params.user_id}`);
+    });
+  },
+  //Method GET: to Show form to edit ppersonalDatarofile:
   async editProfile(req, res) {
     const profileOwner = await Users.findById(req.params.user_id);
     res.render("./profiles/profile_edit.ejs", { profileOwner });
@@ -42,7 +74,29 @@ const controller = {
 
   //Method PUT: to update profile of specific ID
   async updateProfile(req, res) {
-    Users.findByIdAndUpdate(req.params.user_id, req.body, { new: true }, (err, product) => {
+    // console.log("req.files is: ", req.files);
+    const photoUrl = {};
+    if (req.files) {
+      const photoObj = req.files;
+      for (let field in req.files) {
+        const result = await imageKit.upload({
+          file: photoObj[field][0].buffer,
+          fileName: photoObj[field][0].originalname,
+          folder: field,
+        });
+        photoUrl[field] = result.url;
+      }
+    }
+    const personalData = req.body;
+    personalData.profile_photos_url =
+      photoUrl.upload_profile_photos_url ||
+      req.body.profile_photos_url ||
+      "https://images.pexels.com/photos/4321526/pexels-photo-4321526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+    personalData.cover_photos_url =
+      photoUrl.upload_cover_photos_url ||
+      req.body.profile_photos_url ||
+      "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
+    Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err) => {
       if (err) {
         console.log(err);
       }

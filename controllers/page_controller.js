@@ -14,7 +14,6 @@ const controller = {
     try {
       // const clients = await Users.where("isFreelancer").equals(false);
       const jobs = await Jobs.find({}).populate("author_id");
-      // console.log(jobs);
       res.render("./pages/job-market.ejs", { jobs });
     } catch (error) {
       console.log(error.message);
