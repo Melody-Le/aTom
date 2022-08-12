@@ -16,15 +16,6 @@
       <ul class="navbar-nav">
         <% if (authUser) { %>
           <li class="nav-item my-auto">
-            <a class="nav-link active" href="/freelancer-community" id="freelancer-community-page">Freelancer Comunity</a>
-          </li>
-          <li class="nav-item my-auto">
-            <a class="nav-link active" href="/idea-market" id="idea-market-page">Idea Market</a>
-          </li>
-          <li class="nav-item my-auto">
-            <a class="nav-link active" href="/job-market" id="idea-market-page">Jobs</a>
-          </li>
-          <li class="nav-item my-auto">
             <form method="POST" action="/authenticated/logout" class="nav-link my-0">
               <button type="submit" class="border-0 bg-light">Logout</button>
             </form>
@@ -46,6 +37,15 @@
             </a>
           </li>
         <% } else { %>
+          <li class="nav-item my-auto">
+            <a class="nav-link active" href="/freelancer-community" id="freelancer-community-page">Freelancer Comunity</a>
+          </li>
+          <li class="nav-item my-auto">
+            <a class="nav-link active" href="/idea-market" id="idea-market-page">Idea Market</a>
+          </li>
+          <li class="nav-item my-auto">
+            <a class="nav-link active" href="/job-market" id="idea-market-page">Job Market</a>
+          </li>
           <li class="nav-item my-auto">
             <a class="nav-link active" href="/authenticated/login" id="login">Login</a>
           </li>
