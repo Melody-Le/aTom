@@ -11,33 +11,19 @@ a {
   position: absolute;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* width: 10rem; */
-  /* height: 10rem; */
+
   top: -6rem;
-  left: 25%;
+  left: 30%;
 }
 .contact-box {
-  margin-top: 7rem;
+  margin-top: 6rem;
 }
-/* .profile-image {
-  position: absolute;
-  width: 10rem;
-  height: 10rem;
-  object-fit: cover;
-  border-radius: 100%;
-  top: -7rem;
-  left: 25%;
-} */
 
 .profile-image {
-  /* position: absolute; */
   width: 10rem;
   height: 10rem;
   object-fit: cover;
   border-radius: 100%;
-  /* top: -7rem; */
-  /* left: 25%; */
 }
 
 .profile-image:hover {

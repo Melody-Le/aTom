@@ -58,6 +58,7 @@ const controller = {
       "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
     // run the code below to update image into Locals User Variable
     res.locals.authUser.profile_photos_url = personalData.profile_photos_url;
+    personalData.skills = personalData.skills.filter((skill) => !!skill);
     Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err) => {
       if (err) {
         console.log(err);
@@ -94,6 +95,13 @@ const controller = {
       photoUrl.upload_cover_photos_url ||
       req.body.cover_photos_url ||
       "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
+
+    const newSkills = personalData.skills;
+    const profileOwner = await Users.findById(req.params.user_id);
+    const oldSkills = profileOwner.skills;
+    const updatedSkills = [...newSkills, ...oldSkills];
+    personalData.skills = updatedSkills.filter((skill) => !!skill);
+
     Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err) => {
       if (err) {
         console.log(err);

@@ -58,9 +58,22 @@
             <label class="form-label" for="about_me">About me</label>
           </div>
           <% if (profileOwner.isFreelancer) { %>
-            <div class="card-body form-outline">
-              <input type="text" name="skills" value="" class="form-control"/>
+            <div class="card-body form-outline input-skill-container">
+              <input type="text" name="skills" class="form-control input-skill"/>
               <label class="form-label" for="skills">List of Your skills</label>
+              <div class="current-skills-container">
+                <div>Current Skills:</div>
+                <ul class="container list-inline px-0">
+                  <% profileOwner.skills.forEach((skill, skillIndex) => { %>
+                    <form action="/projects/<%= profileOwner._id %>/<%= skillIndex %>/delete-skill?_method=DELETE" method="POST">
+                      <button class="btn-delete border-0 bg-white p-1">
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </form>
+                    <li class="list-inline-item mx-0 rounded"><%= skill %></li>
+                  <% }) %>
+                </ul>
+              </div>
             </div>
           <% } %> 
         </div>
@@ -72,5 +85,6 @@
       </form>
     </div>
     <%- include('../partials/footer.ejs') %>
+    <script src="/js/profile.js"></script>
   </body>
 </html>
