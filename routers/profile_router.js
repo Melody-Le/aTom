@@ -5,7 +5,6 @@ const { authenticatedOnly } = require("../middlewares/auth_middleware");
 const multer = require("multer");
 const upload = multer();
 
-// TODO: REMEMBER TO ADD AUTHENTICATED MIDDELWARE AGAIN FOR NEW AND POST
 router.get("/:user_id/new", authenticatedOnly, profileController.new);
 router.post(
   "/:user_id/new",
@@ -27,5 +26,6 @@ router.put(
 );
 router.get("/:user_id/edit", authenticatedOnly, profileController.editProfile);
 router.get("/:user_id", authenticatedOnly, profileController.showProfilePage);
+router.delete("/:_id/:skillIndex/delete-skill", authenticatedOnly, profileController.deleteSkill);
 
 module.exports = router;

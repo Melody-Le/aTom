@@ -49,16 +49,14 @@ const controller = {
     }
     const personalData = req.body;
     personalData.profile_photos_url =
-      photoUrl.profile_photos_url ||
-      req.body.profile_photos_url ||
-      "https://images.pexels.com/photos/4321526/pexels-photo-4321526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+      photoUrl.profile_photos_url || req.body.profile_photos_url || "/assets/images/profile-img.jpeg";
     personalData.cover_photos_url =
       photoUrl.cover_photos_url ||
       req.body.cover_photos_url ||
-      "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
+      "https://i.pinimg.com/564x/78/76/8f/78768f0ce9056d53e0216e73a9c8cfc8.jpg";
     // run the code below to update image into Locals User Variable
     res.locals.authUser.profile_photos_url = personalData.profile_photos_url;
-    personalData.skills = personalData.skills.filter((skill) => !!skill);
+    // personalData.skills = personalData?.skills?.filter((skill) => !!skill);
     Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err) => {
       if (err) {
         console.log(err);
@@ -88,26 +86,33 @@ const controller = {
     }
     const personalData = req.body;
     personalData.profile_photos_url =
-      photoUrl.upload_profile_photos_url ||
-      req.body.profile_photos_url ||
-      "https://images.pexels.com/photos/4321526/pexels-photo-4321526.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+      photoUrl.upload_profile_photos_url || req.body.profile_photos_url || "/assets/images/profile-img.jpeg";
     personalData.cover_photos_url =
       photoUrl.upload_cover_photos_url ||
       req.body.cover_photos_url ||
-      "https://i.pinimg.com/564x/2b/b1/67/2bb167c3a78a9d883cfd78f9fd8d061f.jpg";
+      "https://i.pinimg.com/564x/78/76/8f/78768f0ce9056d53e0216e73a9c8cfc8.jpg";
 
     const newSkills = personalData.skills;
     const profileOwner = await Users.findById(req.params.user_id);
     const oldSkills = profileOwner.skills;
     const updatedSkills = [...newSkills, ...oldSkills];
     personalData.skills = updatedSkills.filter((skill) => !!skill);
-
+    // run the code below to update image into Locals User Variable
+    res.locals.authUser.profile_photos_url = personalData.profile_photos_url;
     Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err) => {
       if (err) {
         console.log(err);
       }
       res.redirect(`/profiles/${req.params.user_id}`);
     });
+  },
+  async deleteSkill(req, res) {
+    const { _id, skillIndex } = req.params;
+    const profileOwner = await Users.findById(_id);
+    profileOwner?.skills.splice(skillIndex, 1);
+    await profileOwner.save();
+    res.redirect(`/profiles/${profileOwner._id}/edit`);
+    // console.log(req.params);
   },
 };
 module.exports = controller;

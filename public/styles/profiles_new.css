@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  color: black !important;
+}
+
+.btn-submit {
+  color: #ffffff;
+  background-color: #ca1880;
+}
+.profile-photo-container,
+.cover-photo-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap row;
+  align-items: center;
+  gap: 1rem;
+}
+.preview-profile-photo,
+.preview-cover-photo {
+  background-color: cadetblue;
+  height: 7rem;
+  border-radius: 0.5rem;
+  flex: 0 0 7rem;
+  object-fit: contain;
+  overflow: hidden;
+}
+.input-photo {
+  flex: 1 1 auto;
+}

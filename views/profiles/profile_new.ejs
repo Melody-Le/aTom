@@ -2,56 +2,74 @@
   <head>
     <title>aTom | Profile</title>
     <%- include('../partials/generic_head') %>
-    <link rel="stylesheet" type="text/css" href="/styles/profiles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/profiles_new.css">
   </head>
   <body>
-    <%- include('../partials/navbar') %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#!">
+          <img class="logo" src="/assets/images/logo_pink_1.png" alt="A.tom logo" style="height: 2rem" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+        >
+          <span class="navbar-toggler-icon" id="toggler-icon"></span>
+        </button>
+        <div class="offcanvas-md offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <ul class="navbar-nav">
+            <li class="nav-item my-auto">
+              <a class="nav-link active" href="/freelancer-community" id="freelancer-community-page">Freelancer Comunity</a>
+            </li>
+            <li class="nav-item my-auto">
+              <a class="nav-link active" href="/idea-market" id="idea-market-page">Idea Market</a>
+            </li>
+            <li class="nav-item my-auto">
+              <a class="nav-link active" href="/job-market" id="idea-market-page">Jobs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
     <div class="container-fluid personal-data-form pt-3 mx-auto justify-content-center ">
       <form action="/profiles/<%= profileOwner._id %>/new" method="POST" enctype="multipart/form-data">
-        <div class="row mx-auto align-items-center h-100 text-left px-5 gx-4">
-          <div class="card col-md-6 mb-4">
-            <div class="card-body form-outline">
-              <input type="text" name="profile_photos_url" class="form-control" placeholder="your profile image"/>
-              <label class="form-label" for="profile_photos_url">Profile Photo URL or Upload a Photo</label>
-              <!-- NOTE: UPLOAD IMAGE :  -->
-              <i class="fa-solid fa-camera"></i>
-              <div class="input-group">
-                <input name="profile_photos_url" class="files" type="file" />
+        <div class="row text-left px-5 row-cols-1 row-cols-lg-2 gx-5 ">
+
+          <div class="card col mb-4">
+            <div class="card-body form-outline profile-photo-container">
+              <img class="preview-profile-photo w-100 d-block" src="/assets/images/profile-img.jpeg" alt="profile-photo">
+              <div class="input-photo">
+                <input type="text" name="profile_photos_url" class="form-control input-profile-photo-url" placeholder="your profile image"/>
+                <label class="form-label" for="profile_photos_url">Profile Photo URL or Upload a Photo</label>
+                <!-- NOTE: UPLOAD IMAGE :  -->
+                <div class="input-group">
+                  <input name="profile_photos_url" class="files input-profile-photo-file" type="file"/>
+                </div>
               </div>
             </div>
-            <div class="card-body form-outline">
-              <input type="text" name="cover_photos_url" id="cover_photos_url" class="form-control" placeholder="choose the photo that show your interest field"/>
-              <label class="form-label" for="cover_photos_url">Cover Photo URL or Upload a Photo</label>
-              <!-- NOTE: UPLOAD IMAGE :  -->
-              <i class="fa-solid fa-camera"></i>
-              <div class="input-group">
-                <input id="files" name="cover_photos_url" class="files" type="file" />
+
+            <div class="card-body form-outline cover-photo-container">
+              <img class="preview-cover-photo w-100 d-block" src="" alt="cover-photo">
+              <div class="input-photo">
+                <input type="text" name="cover_photos_url" class="form-control input-cover-photo-url" placeholder="your cover image"/>
+                <label class="form-label" for="cover_photos_url">cover Photo URL or Upload a Photo</label>
+                <!-- NOTE: UPLOAD IMAGE :  -->
+                <div class="input-group">
+                  <input name="cover_photos_url" class="files input-cover-photo-file" type="file"/>
+                </div>
               </div>
             </div>
-            <div class="card-body form-outline">
-              <input type="text" name="postal_code" id="postal_code" class="form-control" placeholder="Postal code"/>
-              <label class="form-label" for="postal_code">Postal Code</label>
-            </div>
-            <div class="card-body form-outline">
-              <input type="text" name="city" id="city" class="form-control" placeholder="City"/>
-              <label class="form-label" for="city">City</label>
-            </div>
-          </div>
-          <div class="card col-md-6 mb-4">
-            <div class="card-body form-outline">
-              <input type="text" name="job_title" id="job_title" class="form-control" placeholder="If you provied valious job, please separated by '|' "/>
-              <label class="form-label" for="job_title">Job Title</label>
-            </div>
+
             <% if (profileOwner.isFreelancer) { %>
               <div class="card-body form-outline">
                 <input type="text" name="linkedIn" id="linkedIn" class="form-control" placeholder="linkedIn Link"/>
                 <label class="form-label" for="linkedIn">linkedIn Link</label>
               </div>
             <% } %> 
-            <div class="card-body form-outline">
-              <input type="text" name="about_me" id="about_me" class="form-control" placeholder="About me"/>
-              <label class="form-label" for="about_me">About me</label>
-            </div>
             <% if (profileOwner.isFreelancer) { %>
               <div class="card-body form-outline input-skill-container">
                 <label class="form-label" for="skills">List of Your skills</label>
@@ -59,10 +77,29 @@
               </div>
             <% } %> 
           </div>
-          <button type="submit" class="btn btn-inline mb-4 max-auto">
-            Submit
-          </button>
+
+          <div class="card col mb-4">
+            <div class="card-body form-outline">
+              <input type="text" name="city" id="city" class="form-control" placeholder="City" required/>
+              <label class="form-label" for="city">City</label>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="postal_code" id="postal_code" class="form-control" placeholder="Postal code" required/>
+              <label class="form-label" for="postal_code">Postal Code</label>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="job_title" id="job_title" class="form-control" placeholder="If you provied valious job, please separated by '|' "required/>
+              <label class="form-label" for="job_title">Job Title</label>
+            </div>
+            <div class="card-body form-outline">
+              <input type="text" name="about_me" id="about_me" class="form-control" placeholder="About me" required/>
+              <label class="form-label" for="about_me">About me</label>
+            </div>
+          </div>
         </div>
+        <button type="submit" class="btn btn-submit mb-4 mx-auto">
+          Submit
+        </button>
       </form>
     </div>
     <%- include('../partials/footer.ejs') %>

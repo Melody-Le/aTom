@@ -67,7 +67,7 @@ const controller = {
   async deleteSkill(req, res) {
     const { project_id, skillIndex } = req.params;
     const project = await Projects.findById(project_id);
-    project.skills.splice(skillIndex, 1);
+    project?.skills.splice(skillIndex, 1);
     await project.save();
     res.redirect(`/projects/${project_id}/edit`);
   },

@@ -38,7 +38,6 @@ const controller = {
           return;
         }
         req.session.currentUser = newUser;
-        console.log("currentUser in register: ", req.session.currentUser);
         req.session.save(function (err) {
           if (err) {
             res.send("unable to save session");
