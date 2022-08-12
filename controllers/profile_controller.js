@@ -111,7 +111,6 @@ const controller = {
     profileOwner?.skills.splice(skillIndex, 1);
     await profileOwner.save();
     res.redirect(`/profiles/${profileOwner._id}/edit`);
-    // console.log(req.params);
   },
 };
 module.exports = controller;

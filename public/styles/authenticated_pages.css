@@ -9,10 +9,7 @@ a {
 .register-form {
   background-color: hsl(0, 0%, 96%);
   background-image: url("/assets/images/background-3.jpeg");
-  /* background-position: center; */
-  background-repeat: no-repeat;
   background: lightblue url("/assets/images/background-3.jpeg") no-repeat fixed center;
-  /* background-origin: content-box; */
   background-size: 100%;
   height: 100vh;
 }

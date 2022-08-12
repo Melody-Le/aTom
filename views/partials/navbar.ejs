@@ -14,6 +14,15 @@
     </button>
     <div class="offcanvas-md offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <ul class="navbar-nav">
+        <li class="nav-item my-auto">
+          <a class="nav-link active" href="/freelancer-community" id="freelancer-community-page">Freelancer Comunity</a>
+        </li>
+        <li class="nav-item my-auto">
+          <a class="nav-link active" href="/idea-market" id="idea-market-page">Idea Market</a>
+        </li>
+        <li class="nav-item my-auto">
+          <a class="nav-link active" href="/job-market" id="idea-market-page">Job Market</a>
+        </li>
         <% if (authUser) { %>
           <li class="nav-item my-auto">
             <form method="POST" action="/authenticated/logout" class="nav-link my-0">
@@ -37,15 +46,7 @@
             </a>
           </li>
         <% } else { %>
-          <li class="nav-item my-auto">
-            <a class="nav-link active" href="/freelancer-community" id="freelancer-community-page">Freelancer Comunity</a>
-          </li>
-          <li class="nav-item my-auto">
-            <a class="nav-link active" href="/idea-market" id="idea-market-page">Idea Market</a>
-          </li>
-          <li class="nav-item my-auto">
-            <a class="nav-link active" href="/job-market" id="idea-market-page">Job Market</a>
-          </li>
+          
           <li class="nav-item my-auto">
             <a class="nav-link active" href="/authenticated/login" id="login">Login</a>
           </li>
