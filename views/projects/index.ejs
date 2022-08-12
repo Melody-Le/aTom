@@ -3,6 +3,7 @@
     <title>aTom | Project</title>
     <%- include('../partials/generic_head') %>
     <link rel="stylesheet" type="text/css" href="/styles/projects.css">
+    <link rel="stylesheet" type="text/css" href="/styles/idea_market.css">
   </head>
   <body>
     <%- include('../partials/navbar') %>
@@ -50,12 +51,12 @@
         <h3>Project Description:</h3>
         <%= project.project_description %>
       </div>
-      <div class="container-fluid mt-5">
+      <div class="container mt-5">
         <h3>Project photos:</h3>
-        <div class="project-photos">
+        <div class="container-card card-columns">
           <% project.photos.forEach((photo) => { %>
-            <div class="project-photo">
-              <img class="d-block w-100" src="<%= photo %>" alt="photo of project <%= project.project_name %>">
+            <div class="card d-inline-block mb-4">
+              <img class="card-img-top" src="<%= photo %>" alt="photo of project <%= project.project_name %>">
             </div>
           <% }) %>
         </div>
