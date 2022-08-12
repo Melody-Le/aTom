@@ -50,12 +50,14 @@ a {
 .about-me {
   white-space: pre-wrap;
 }
-.project-description {
+.project-description,
+.job-description {
   height: 10rem;
   overflow-y: scroll;
   white-space: pre-wrap;
 }
-.card-project {
+.card-project,
+.card-job {
   position: relative;
 }
 .btn-edit {

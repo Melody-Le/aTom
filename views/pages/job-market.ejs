@@ -20,11 +20,11 @@
                 <img src="<%= job?.author_id?.profile_photos_url %>" class="profile-image" alt="<%= job?.author_id?.user_name %>">
                 <h5 class="mx-auto text-capitalize py-3"><%= job?.author_id?.user_name %></h5>
               </a>
-              <div class="card-body contact-box mx-auto">
+              <div class="card-body contact-box-job mx-auto">
                 <a href="#!" class="card-link">Message me</a>
                 <a href="mailto:<%= job?.author_id?.email %> " class="card-link">Email me</a>
               </div>
-              <div class="card-body mt-1 p-0">
+              <div class="card-body mt-1 p-0 job-intro">
                 <h5 class="card-title"><%= job?.job_title %></h5>
                 <p class="card-text"><%= job?.job_description %></p>
               </div>

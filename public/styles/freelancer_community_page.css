@@ -15,8 +15,17 @@ a {
   top: -6rem;
   left: 30%;
 }
-.contact-box {
+.freelancer-intro {
+  margin-top: 7rem;
+}
+
+.contact-box-job {
   margin-top: 6rem;
+}
+
+.job-intro {
+  height: 8rem;
+  overflow-y: auto;
 }
 
 .profile-image {
@@ -36,7 +45,7 @@ a {
   height: 8rem;
   object-fit: cover;
 }
-.card-text {
+.about-me {
   height: 8rem;
   overflow-y: auto;
 }
