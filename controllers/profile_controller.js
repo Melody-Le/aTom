@@ -67,6 +67,7 @@ const controller = {
   //Method GET: to Show form to edit ppersonalDatarofile:
   async editProfile(req, res) {
     const profileOwner = await Users.findById(req.params.user_id);
+    // console.log(profileOwner);
     res.render("./profiles/profile_edit.ejs", { profileOwner });
   },
 
