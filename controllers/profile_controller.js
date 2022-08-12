@@ -95,8 +95,7 @@ const controller = {
     const newSkills = personalData.skills;
     const profileOwner = await Users.findById(req.params.user_id);
     const oldSkills = profileOwner.skills;
-    const updatedSkills = [...newSkills, ...oldSkills];
-    personalData.skills = updatedSkills.filter((skill) => !!skill);
+    personalData.skills = oldSkills.concat(newSkills).filter((skill) => !!skill);
     // run the code below to update image into Locals User Variable
     res.locals.authUser.profile_photos_url = personalData.profile_photos_url;
     Users.findByIdAndUpdate(req.params.user_id, personalData, { new: true }, (err) => {
