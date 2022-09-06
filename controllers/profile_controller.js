@@ -38,6 +38,7 @@ const controller = {
     // console.log(req.files);
     if (req.files) {
       const photoObj = req.files;
+      console.log(req.files);
       for (let field in req.files) {
         const result = await imageKit.upload({
           file: photoObj[field][0].buffer,
@@ -82,6 +83,7 @@ const controller = {
           fileName: photoObj[field][0].originalname,
           folder: field,
         });
+        console.log(`result is: ${result[field]}`);
         photoUrl[field] = result.url;
       }
     }
