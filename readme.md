@@ -106,10 +106,6 @@
 
 ---
 
-## Unsolved
-
-- Still have bug in edit profile route
-
 ## Possible Improvements
 
 - OAuth 2.0
