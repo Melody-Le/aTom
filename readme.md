@@ -7,7 +7,7 @@
 
 ## HEROKU APP LINK
 
-## [link to App!](https://atom-freelancer-app.herokuapp.com/)
+## [link to App!](https://atom-freelancer-web.cyclic.app/freelancer-community)
 
 ## Technologies
 
